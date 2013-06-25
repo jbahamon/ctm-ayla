@@ -12,11 +12,17 @@ localcoord = 320,240        ;Local coordinate space width and height
 [Files]
 cmd     = Ayla.cmd           ;Command set
 cns     = Ayla.cns           ;Constants
-st      = Ayla.cns           ;States
 stcommon = common1.cns      ;Common states (from data/ or motif)
 sprite  = Ayla.sff           ;Sprite
 anim    = Ayla.air           ;Animation
 sound   = Ayla.snd           ;Sound
+st      = Ayla.cns           ;States
+st1     = States/System.st
+st2     = States/Normal.st 
+st3     = States/Specials.st
+st4     = States/Supers.st
+st5     = States/Helpers.st
+st6     = States/Custom.st
 
 ; Maps character selection buttons to palette numbers.
 [Palette Keymap]

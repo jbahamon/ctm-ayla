@@ -133,3 +133,4 @@ Contact
 
 - If you have questions, suggestions, comments, send me a private message at the Mugen Fighters Guild's forum.
   I may not answer immediately, but I'll try.
+

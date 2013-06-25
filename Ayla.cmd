@@ -504,7 +504,7 @@ trigger1 = ctrl
 ; Super Moves
 ;===========================================================================
 [State -1, SGS]
-type = null;ChangeState
+type = ChangeState
 value = 2100
 triggerall = Command = "Shun Goku Satsu"
 triggerall = Power >= 3000

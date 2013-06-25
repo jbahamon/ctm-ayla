@@ -650,38 +650,3 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ; States that are always executed (use statedef -2)
 ;---------------------------------------------------------------------------
-
-;---------------------------------------------------------------------------
-; States that are executed when in self's state file (use statedef -3)
-;---------------------------------------------------------------------------
-
-[Statedef -3]
-
-
-[State 0, DisplayToClipboard]
-type = DisplayToClipboard
-trigger1 = 1
-text = "%d %d"
-params = StateNo, PrevStateNo
-
-;This controller plays a sound everytime Ayla lands from a jump, or
-;from his back-dash.
-[State -3, Landing Sound]
-type = PlaySnd
-triggerall = Time = 1
-trigger1 = stateno = 52 ;Jump land
-trigger2 = stateno = 106 ;Run-back land
-value = S7010, 3
-
-[State -3, Landing Sound]
-type = PlaySnd
-trigger1 = stateno = 100 && (AnimElemTime(1) = 1)
-value = S7010, 4
-
-[State -3, Landing Sound]
-type = PlaySnd
-triggerall = Time = 1
-trigger1 = stateno = 50 ;Jump 
-trigger1 = (PrevStateNo != [200,1099]) && (PrevStateNo != [2000,2099])
-trigger2 = stateno = 105 ;Run-back
-value = S7010, 5

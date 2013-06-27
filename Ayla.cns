@@ -169,7 +169,7 @@ ctrl = 1
 
 [State -3, CustomCombo]
 type = PowerAdd
-trigger1 = Var(21) > 0 && StateNo != 2110
+trigger1 = Var(21) > 0 && StateNo != 2110 && StateNo != [2100, 2102]
 value = -10
 
 [State -3: VarSet]
@@ -178,14 +178,10 @@ trigger1 = (MoveType = H) || (Roundstate = 3)
 v = 21
 value = 0
 
-[State -3: ChangeAnim]
-type = ChangeAnim
-triggerall = (Var(21) > 0) && (RoundState = 2) && (MoveType != H)
-trigger1 = AnimElemTime(AnimElemNo(0) + 1) < 0
-trigger1 = AnimElemTime(AnimElemNo(0)) > floor ((AnimElemTime(AnimElemNo(0)) - AnimElemTime(AnimElemNo(0) + 1))/3)
-ignorehitpause = 1
-value = Anim
-elem = AnimElemNo(0) + 1
+[State -3, CustomCombo]
+type = VarSet
+trigger1 = Var(21) > 0 && !Power && StateNo != [2100, 2102]
+var(21) = 0
 
 [State -3: PalFX]
 type = PalFX
@@ -193,16 +189,23 @@ trigger1 = (Var(21) > 0) && ((GameTime%3) = 0)
 time = 2
 add = 132,16,0
 sinadd = 164,32,5,2
+ignorehitpause = 1
 
-[State -3: AfterImageTime]
-type = AfterImageTime
-trigger1 = (Var(21) > 0)
-time = 2
+[State -3: ChangeAnim]
+type = ChangeAnim
+triggerall = (Var(21) > 0) && (RoundState = 2) && (MoveType != H) && StateNo != [2100, 2102]
+trigger1 = AnimElemTime(AnimElemNo(0) + 1) < 0
+trigger1 = AnimElemTime(AnimElemNo(0)) > floor ((AnimElemTime(AnimElemNo(0)) - AnimElemTime(AnimElemNo(0) + 1))/3)
+ignorehitpause = 1
+value = Anim
+elem = AnimElemNo(0) + 1
+
 
 [State -3: AttackMulSet]
 type = AttackMulSet
 trigger1 = (Var(21) > 0)
 value = 0.3
+ignorehitpause = 1
 
 [State -3: AttackMulSet]
 type = AttackMulSet
@@ -220,11 +223,6 @@ type = RemapPal
 trigger1 = (Var(21) != 0)
 source = 1, palno
 dest = 2, palno
-
-[State -3, CustomCombo]
-type = VarSet
-trigger1 = Var(21) > 0 && !Power
-var(21) = 0
 
 ;This controller plays a sound everytime Ayla lands from a jump, or
 ;from his back-dash.

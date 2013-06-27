@@ -512,7 +512,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 2100
 triggerall = Command = "Shun Goku Satsu"
-triggerall = Power >= 3000
+triggerall = Var(21) > 0
 trigger1 = statetype != A
 trigger1 = ctrl || ((stateno = [200, 299]) && time <= 10)
 

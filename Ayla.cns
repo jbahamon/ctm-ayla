@@ -215,14 +215,20 @@ value = 1
 [State -3: AttackMulSet]
 type = RemapPal
 trigger1 = (Var(21) = 0)
-source = 1, palno
+source = 1, 1
 dest = 1, palno
 
 [State -3: AttackMulSet]
 type = RemapPal
 trigger1 = (Var(21) != 0)
-source = 1, palno
+source = 1, 1
 dest = 2, palno
+
+[State -3, print]
+trigger1 = 1
+type = DisplayToClipboard
+text = "%d"
+params = palno
 
 ;This controller plays a sound everytime Ayla lands from a jump, or
 ;from his back-dash.

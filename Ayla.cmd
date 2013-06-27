@@ -516,14 +516,6 @@ triggerall = Var(21) > 0
 trigger1 = statetype != A
 trigger1 = ctrl || ((stateno = [200, 299]) && time <= 10)
 
-[State -1, Custom Combo]
-type = ChangeState
-value = 2110
-triggerall = Command = "2p"
-triggerall = Power >= 3000
-trigger1 = StateType != A
-trigger1 = ctrl 
-
 [State -1, Gatling Kick]
 type = ChangeState
 value = 2020
@@ -607,6 +599,14 @@ type = ChangeState
 trigger1 = (command = "recovery" || command = "2p") && (command = "holdfwd" || command = "holdback")
 trigger1 = roundstate = 2 && ctrl && statetype = S && stateno != 100
 value = 800
+
+[State -1, Custom Combo]
+type = ChangeState
+value = 2110
+triggerall = Command = "2p" && !(command = "holdfwd" || command = "holdback")
+triggerall = Power >= 3000
+trigger1 = StateType != A
+trigger1 = ctrl 
 
 ;===========================================================================
 ; Normal Moves

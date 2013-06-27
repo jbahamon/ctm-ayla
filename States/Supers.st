@@ -1670,7 +1670,7 @@ anim = 2102
 ID = 2102
 sprpriority = -5
 postype = left
-pos = 160, 120
+pos = 0.5 *  gamewidth, 0.5 * gameheight
 scale = 1 * (1.3333333 * gameheight / gamewidth), 1 * (1.3333333 * gameheight / gamewidth)
 bindtime = -1
 
@@ -1725,8 +1725,8 @@ sinadd = -255, -255, -255, 240
 [State 2103, pos]
 type=PosAdd
 trigger1=1
-x=160 - Screenpos x
-y=240-Screenpos y
+x= 0.5 *  gamewidth - Screenpos x
+y= gameheight - Screenpos y
 
 [State 2103, Size]
 type = AngleDraw
@@ -1781,4 +1781,72 @@ type = SelfState
 trigger1 = Time >= 76 && Alive
 value = 5120
 
+;Berserker Activation
+[Statedef 2110]
+type = S
+movetype = I
+physics = S
+anim = 2010
+ctrl = 0
+velset = 0,0
+sprpriority = 2
+
+[State 2110, VarSet]
+type = VarSet
+trigger1 = (!Time)
+v = 21
+value = 1
+
+[State 2110, Super Pause FX]
+type = helper
+trigger1 = time = 1
+helpertype = normal
+stateno = 7000
+ID = 7000
+name = "Super Charge"
+postype = p1
+pos = 0,0
+ownpal = 1
+persistent = 0
+supermovetime = 9999
+
+[State 2110, Super Pause]
+type = SuperPause
+trigger1 = Time = 1
+time = 60
+movetime = 60
+anim = -1
+sound = S7010,2
+p2defmul = 1
+darken = 0
+
+[State 2110, End]
+type = ChangeState
+trigger1 = Time > 1 && !NumHelper(7000) && Var(21) > 0
+value = 2111
+ctrl = 1
+
+;Berserker
+[Statedef 2111]
+type = S
+physics = S
+anim = 20
+sprpriority = 1
+     
+[State 9001: VelSet]
+type = VelSet
+trigger1 = 1
+x = 2.8
+     
+[State 9001: AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoWalk
+flag2 = NoAutoTurn
+     
+[State 9001: ChangeState]
+type = ChangeState
+trigger1 = !Var(21)
+value = 0
+ctrl = 1
 

@@ -12,7 +12,7 @@ juggle  = 3
 ctrl = 0
 anim = 1010
 sprpriority = 1
-poweradd = 72
+poweradd = IfElse(Var(21) > 0, 0, 72)
 facep2 = 1
 
 [State 1010, Strength]
@@ -112,7 +112,7 @@ airguard.cornerpush.veloff = 0
 yaccel = 0.4
 air.fall = 1
 fall.recover = 1
-getpower = ifelse(p2movetype = H, 36, 72), 36 
+getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 36, 72)), IfElse(Var(21) > 0, 0, 36)
 givepower = 36, 36
 envshake.time = 8
 envshake.freq = 120
@@ -149,7 +149,7 @@ givepower = 56,0
 yaccel = 0.625
 fall = 1
 fall.recover = 0
-getpower = ifelse(p2movetype = H, 36, 72), 36 
+getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 36, 72)), IfElse(Var(21) > 0, 0, 36)
 givepower = 36, 36
 envshake.time = 8
 envshake.freq = 120
@@ -335,7 +335,7 @@ yaccel = 0.5
 airguard.ctrltime = 16
 airguard.velocity = -8, -1.5
 forcestand = 1
-getpower = ifelse(p2movetype = H, 72, 144), 36
+getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 72, 144)), IfElse(Var(21) > 0, 0, 36)
 givepower = 36, 36
 palfx.add = 200, 200, 200
 palfx.mul = 256, 256, 256
@@ -771,7 +771,7 @@ ground.slidetime = 14
 ground.hittime  = 17
 ground.velocity = -4
 air.velocity = -4,-2
-getpower = ifelse(p2movetype = H, 72, 216), 36
+getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 72, 216)), IfElse(Var(21) > 0, 0, 36)
 givepower = 36, 36
 palfx.add = 200, 200, 200
 palfx.mul = 256, 256, 256
@@ -811,7 +811,7 @@ type    = A
 movetype= A
 physics = A
 juggle  = 3
-poweradd= 72
+poweradd= IfElse(Var(21) > 0, 0, 72)
 ctrl = 0
 anim = 1040
 sprpriority = 1
@@ -871,7 +871,7 @@ air.cornerpush.veloff = 0
 ground.cornerpush.veloff = 0
 guard.velocity = -10.52
 guard.cornerpush.veloff = 0;-12.74
-getpower = ifelse(p2movetype = H, 72, 144), 36
+getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 72, 144)), IfElse(Var(21) > 0, 0, 36)
 givepower = 36, 36
 envshake.time = 16
 envshake.freq = 120
@@ -913,7 +913,7 @@ air.cornerpush.veloff = 0
 ground.cornerpush.veloff = 0
 guard.velocity = -10.52
 guard.cornerpush.veloff = 0;-12.74
-getpower = ifelse(p2movetype = H, 72, 144), 36
+getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 72, 144)), IfElse(Var(21) > 0, 0, 36)
 givepower = 36, 36
 envshake.time = 16
 envshake.freq = 120

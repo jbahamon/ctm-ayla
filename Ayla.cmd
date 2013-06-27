@@ -1,4 +1,4 @@
-﻿; The CMD file.
+; The CMD file.
 ;
 ; Two parts: 1. Command definition and  2. State entry
 ; (state entry is after the commands def section)
@@ -371,6 +371,11 @@ name = "2p"
 command = a+c
 time = 1
 
+[Command]
+name = "2p"
+command = a+b
+time = 1
+
 ;-| Dir + Button |---------------------------------------------------------
 
 [Command]
@@ -511,6 +516,14 @@ triggerall = Power >= 3000
 trigger1 = statetype != A
 trigger1 = ctrl || ((stateno = [200, 299]) && time <= 10)
 
+[State -1, Custom Combo]
+type = ChangeState
+value = 2110
+triggerall = Command = "2p"
+triggerall = Power >= 3000
+trigger1 = StateType != A
+trigger1 = ctrl 
+
 [State -1, Gatling Kick]
 type = ChangeState
 value = 2020
@@ -605,6 +618,7 @@ triggerall = command = "a"
 triggerall = command != "holddown"
 trigger1 = statetype != A
 trigger1 = ctrl
+trigger2 = (StateType != A) && (MoveContact) && (Var(21) > 0)
 ;---------------------------------------------------------------------------
 [State -1, Stand Mid]
 type = ChangeState
@@ -615,6 +629,7 @@ trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200) 
 trigger2 = movecontact
+trigger3 = (StateType != A) && (MoveContact) && (Var(21) > 0)
 
 ;---------------------------------------------------------------------------
 [State -1, Stand Strong]
@@ -626,7 +641,7 @@ trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200) || (stateno = 210)
 trigger2 = movecontact
-
+trigger3 = (StateType != A) && (MoveContact) && (Var(21) > 0)
 
 ;---------------------------------------------------------------------------
 ;Taunt
@@ -648,6 +663,7 @@ trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200)
 trigger2 = movecontact
+trigger3 = (StateType != A) && (MoveContact) && (Var(21) > 0)
 
 ;---------------------------------------------------------------------------
 ;Crouching Mid
@@ -660,6 +676,7 @@ trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 200) || (stateno = 210) || (stateno = 400) 
 trigger2 = movecontact
+trigger3 = (StateType != A) && (MoveContact) && (Var(21) > 0)
 
 ;---------------------------------------------------------------------------
 ;Crouching Strong
@@ -672,6 +689,7 @@ trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = 400) || (stateno = 410) || (stateno = 200) || (stateno = 210)
 trigger2 = movecontact
+trigger3 = (StateType != A) && (MoveContact) && (Var(21) > 0)
 
 ;---------------------------------------------------------------------------
 ;Jump Light

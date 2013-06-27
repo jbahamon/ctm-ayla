@@ -104,6 +104,11 @@ type=S
 ctrl=0
 velset=0,0
 
+[State 190, ComboReset]
+type = VarSet
+trigger1 = !Time
+var(21) = 2
+
 [State 190, 0]
 type = ChangeState
 trigger1 = Time

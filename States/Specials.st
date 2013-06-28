@@ -781,6 +781,7 @@ air.cornerpush.veloff = -2;
 
 [State 1034, End]
 type = ChangeState
+trigger1 = Vel Y > 0
 trigger1 = Pos Y > - Vel X
 value = 1035
 

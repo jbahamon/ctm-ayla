@@ -929,6 +929,7 @@ Y = 0.38
 
 [State 2011, Blocked]
 type = ChangeState
+trigger1 = Vel Y > 0
 trigger1 = Pos Y > - Vel Y
 value = 611
 ctrl = 0

@@ -683,6 +683,7 @@ palfx.time = 8
 
 [State 610, Landing]
 type = ChangeState
+trigger1 = Vel Y > 0
 trigger1 = pos y > -vel y
 value = 611
 

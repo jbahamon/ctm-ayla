@@ -160,8 +160,8 @@ palfx.time = 8
 
 [State 1010, End]
 type = ChangeState
-trigger1 = Pos Y >= 0 && AnimElemNo(0) = 9
-value = 52
+trigger1 = Pos Y >= -Vel Y && AnimElemNo(0) = 9
+value = 611
 
 ;---------------------------------------------------------------------------
 ; Rock Throw
@@ -484,10 +484,9 @@ Y = 0
 
 [State 1030, Fail]
 type = ChangeState
-triggerall = Pos Y > -15 
+triggerall = Pos Y > -Vel Y
 trigger1 = Anim = 1033 && var(0)
-;trigger2 = (AnimElemNo(0) > 4)
-value = 52
+value = 1035
 ctrl = 0
 
 [State 1030, Hit]
@@ -782,9 +781,10 @@ air.cornerpush.veloff = -2;
 
 [State 1034, End]
 type = ChangeState
-trigger1 = Pos Y > 0
+trigger1 = Pos Y > - Vel X
 value = 1035
 
+;Cat Attack/Drill Kick Missed
 [Statedef 1035]
 type = C
 physics = C
@@ -800,7 +800,7 @@ Y = 0
 
 [State 1035, Pos]
 type = ChangeState
-trigger1 = Time > 10
+trigger1 = Time > 12
 value = 0
 ctrl = 1
 
@@ -809,7 +809,7 @@ ctrl = 1
 [Statedef 1040]
 type    = A
 movetype= A
-physics = A
+physics = N
 juggle  = 3
 poweradd= IfElse(Var(21) > 0, 0, 72)
 ctrl = 0
@@ -820,7 +820,7 @@ facep2 = 1
 [State 1040, Vel]
 type = VelSet
 trigger1 = !Time
-x = 3;IfElse(Vel X > 0, 0.5 *(Vel X), 0.5)
+x = 3
 
 [State 1040, Vel]
 type = VelSet
@@ -834,13 +834,11 @@ value = S7000,1
 loop = 1
 channel = 0
 
-
 [State 1040, Vel]
 type = StopSnd
 trigger1 = AnimElemNo(0) > 9
 channel = 0
 ;loop = 1
-
 
 [State 1040, Vel]
 type = VelSet
@@ -930,4 +928,14 @@ palfx.add = 200, 200, 200
 palfx.mul = 256, 256, 256
 palfx.time = 8
 
+
+[State 1040, Vel]
+type = VelAdd
+trigger1 = AnimElemNo(0) > 8
+Y = 0.4
+
+[State 1040, End]
+type = ChangeState
+trigger1 = Pos Y > -Vel Y
+value = 1035
 

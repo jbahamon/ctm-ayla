@@ -4,7 +4,7 @@
 
 [Data]
 ;Amount of life to start with
-life =1000
+life = 1000
 ;attack power (more is stronger)
 attack = 100
 ;defensive power (more is stronger)
@@ -228,7 +228,7 @@ dest = 2, palno
 trigger1 = 1
 type = DisplayToClipboard
 text = "%d"
-params = palno
+params = Var(21)
 
 ;This controller plays a sound everytime Ayla lands from a jump, or
 ;from his back-dash.

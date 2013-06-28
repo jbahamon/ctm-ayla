@@ -13,6 +13,7 @@ poweradd= -1000
 ctrl = 0
 anim = 2010
 sprpriority = 2
+facep2 = 1
 
 [State 2010, NHB]
 type = NotHitBy
@@ -558,21 +559,17 @@ var(0) = 1
 
 [State 2011, Success]
 type = ChangeState
+triggerall = !Var(0)
 trigger1 = MoveHit
 trigger2 = FrontEdgeBodyDist < 5
 value = 2012
 ctrl = 0
 
-[State 2011, Blocked or Evaded]
-type = VelSet
-trigger1 = var(0) = 1
-x = - 3
-y = - 5
 
 [State 2011, Blocked]
 type = ChangeState
-trigger1 = var(0) = 1 
-value = 50
+trigger1 = Var(0)
+value = 2014
 ctrl = 0
 
 ; Second Kick
@@ -910,6 +907,32 @@ trigger1 = Pos Y >= 0
 value = 52
 ctrl = 0
 
+; Missed
+[Statedef 2014]
+type = A
+physics = N
+movetype = I
+velset = 0,0
+anim = 43
+ctrl = 0
+
+[State 2011, Blocked or Evaded]
+type = VelSet
+trigger1 = !Time
+x = - 3
+y = - 5
+
+[State 2011, Gravity]
+type = VelAdd
+trigger1 = 1
+Y = 0.38
+
+[State 2011, Blocked]
+type = ChangeState
+trigger1 = Pos Y > - Vel Y
+value = 611
+ctrl = 0
+
 ;---------------------------------------------------------------------------
 ;Gatling Kick
 [Statedef 2020]
@@ -984,7 +1007,6 @@ anim = 2021
 sprpriority = 1
 velset = 6.7,0
 
-
 [State 2021, Snd]
 trigger1 = Time % 10 = 9
 type = PlaySnd
@@ -1051,6 +1073,21 @@ movetype = A
 poweradd = 0
 velset = 0,0
 
+[State 2022, Helper]
+type = Helper
+trigger1 = !Time
+helpertype = normal ;player
+name = "Chasm"
+ID = 2022
+stateno = 2025
+pos = Floor(Target, Pos X - Pos X ) * Facing , Floor(-Pos Y);Floor(Target, Pos X - Pos X ) * Facing, Floor(-Pos Y)
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 1
+ignorehitpause =  1
+persistent = 0
+
 [State 2022, !Push]
 type = PlayerPush
 trigger1 = 1
@@ -1082,20 +1119,6 @@ trigger1 = 1
 value = 0
 ignorehitpause =  1
 
-[State 2022, Helper]
-type = Helper
-trigger1 = !Time
-helpertype = normal ;player
-name = "Chasm"
-ID = 2022
-stateno = 2025
-pos = 0, Floor(-Pos Y);Floor(Target, Pos X - Pos X ) * Facing, Floor(-Pos Y)
-postype = p1
-facing = 1
-keyctrl = 0
-ownpal = 1
-ignorehitpause =  1
-persistent = 0
 
 [State 2022, Var]
 type = VarSet
@@ -1397,7 +1420,7 @@ ignorehitpause = 1
 
 ;---------------------------------------------------------------------------
 
-;lol SGS - start
+;SKS - start
 [Statedef 2100]
 type    = S
 movetype= A
@@ -1458,7 +1481,7 @@ trigger1 = Time > 1 && !NumHelper(7000)
 value = 2101
 ctrl = 0
 
-;SGS - Advancing
+;SKS - Advancing
 [Statedef 2101]
 type    = S
 movetype= A
@@ -1520,7 +1543,7 @@ p1stateno = 2102
 fall = 1 
 fall.recover = 0
 
-;SGS - Hitting
+;SKS - Hitting
 [Statedef 2102]
 type    = S
 movetype= A
@@ -1657,7 +1680,7 @@ trigger1 = !AnimTime
 value = 0
 ctrl = 1
 
-;SGS - Flame BG
+;SKS - Flame BG
 [Statedef 2103]
 anim = 2103
 physics = N
@@ -1747,7 +1770,7 @@ trigger1 = time >= 180
 type=Destroyself
 trigger1=time>=180
 
-;SGS - Got hit
+;SKS - Got hit
 [Statedef 2105]
 type = S
 movetype = H
@@ -1759,7 +1782,7 @@ type = ChangeAnim2
 value = 2105
 ignorehitpause = 1
 
-;SGS - Lying
+;SKS - Lying
 [Statedef 2106]
 type = L
 movetype = H
@@ -1786,16 +1809,30 @@ value = 5120
 type = S
 movetype = I
 physics = S
-anim = 2010
+anim = 2020
 ctrl = 0
 velset = 0,0
 sprpriority = 2
+facep2 = 1
 
-[State 2110, VarSet]
-type = VarSet
-trigger1 = (!Time)
-v = 21
-value = 1
+[State 2010, NHB]
+type = NotHitBy
+trigger1 = 1
+time = 1
+value = SCA
+
+[State 2010, PalFx]
+type = PalFX
+trigger1 = (Time % 8 = 0)
+time = 2
+add = 200, 200, 200
+mul = 256, 256, 256
+
+[State 2010, Offset]
+type = OffSet
+trigger1 = Time % 2 = 0
+X = (random % 8) - 4
+Y = (random % 8) - 4
 
 [State 2110, Super Pause FX]
 type = helper
@@ -1819,6 +1856,12 @@ anim = -1
 sound = S7010,2
 p2defmul = 1
 darken = 0
+
+[State 2110, VarSet]
+type = VarSet
+trigger1 = (!AnimTime)
+v = 21
+value = 1
 
 [State 2110, End]
 type = ChangeState

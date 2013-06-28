@@ -107,7 +107,7 @@ velset=0,0
 [State 190, ComboReset]
 type = VarSet
 trigger1 = !Time
-var(21) = 2
+var(21) = 0
 
 [State 190, 0]
 type = ChangeState

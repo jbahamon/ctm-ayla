@@ -15,6 +15,7 @@ ctrl = 0                         ;Set ctrl (Def: no change)
 anim = 200                       ;Change animation (Def: no change)
 poweradd = 0                     ;Power to add (Def: 0)
 sprpriority = 1                  ;Set p1's sprite layering priority to 2 (in front)
+facep2 = 1
 
 [State 200, VelSet]
 type = Velset
@@ -99,6 +100,7 @@ ctrl = 0
 velset = 0,0
 anim = 210
 sprpriority = 2
+facep2 = 1
 
 [State 210, VelSet]
 type = Velset
@@ -213,6 +215,7 @@ ctrl = 0
 velset = 0,0
 anim = 220
 sprpriority = 1
+facep2 = 1
 
 [State 220, VelSet]
 type = Velset
@@ -293,6 +296,7 @@ ctrl = 0
 velset = 0,0
 anim = 400
 sprpriority = 2
+facep2 = 1
 
 [State 400, VelSet]
 type = Velset
@@ -353,6 +357,7 @@ velset = 0,0
 ctrl = 0
 anim = 410
 sprpriority = 1
+facep2 = 1
 
 [State 410, VelSet]
 type = Velset
@@ -438,6 +443,7 @@ velset = 0,0
 ctrl = 0
 anim = 420
 sprpriority = 1
+facep2 = 1
 
 [State 420, VelSet]
 type = Velset
@@ -531,6 +537,7 @@ poweradd= 0
 ctrl = 0
 anim = 600
 sprpriority = 1
+facep2 = 1
 
 [State 600, 1]
 type = PlaySnd
@@ -593,7 +600,7 @@ value = 1
 [Statedef 610]
 type    = A
 movetype= A
-physics = A
+physics = N
 juggle  = 4
 poweradd= IfElse(Var(21) > 0, 0, 18)
 ctrl = 0
@@ -605,11 +612,27 @@ type = PlaySnd
 trigger1 = Time = 2
 value = S7000, 0
 
+[State 610, Set]
+type = Varset
+trigger1 = !Time
+var(0) = Vel X > 0
+
+[State 610, Vel]
+type = VelSet
+trigger1 = !Time && Var(0)
+X = 0
+Y = 0
+
 [State 610, VelAdd]
 type = VelAdd
-trigger1 = AnimElemTime(2) = 0
-x = ifelse(Vel X > -2, 2, 0)
-y = ifelse(Vel Y > -2, 0, 2)
+trigger1 = !Var(0)
+Y = 0.49
+
+[State 610, VelAdd]
+type = VelSet
+trigger1 = AnimElemTime(2) = 0 && Var(0)
+x = 5
+y = 5
 
 [State 610, Explod]
 type = Explod
@@ -658,6 +681,32 @@ palfx.add = 200, 200, 200
 palfx.mul = 256, 256, 256
 palfx.time = 8
 
+[State 610, Landing]
+type = ChangeState
+trigger1 = pos y > -vel y
+value = 611
+
+;Jump Mid Landing
+[Statedef 611]
+type    = S
+movetype= I
+physics = S
+ctrl = 0
+anim = 131
+sprpriority = 1
+velset = 0,0
+
+[State 611, Pos]
+type = PosSet
+trigger1 = !Time
+Y = 0
+
+[State 611, End]
+type = ChangeState
+trigger1 = Time > 10
+value = 0
+ctrl = 1
+
 ;---------------------------------------------------------------------------
 ;Jump Strong
 ; CNS difficulty: easy
@@ -670,6 +719,7 @@ poweradd= IfElse(Var(21) > 0, 0, 18)
 ctrl = 0
 anim = 620
 sprpriority = 1
+facep2 = 1
 
 [State 630, 1]
 type = PlaySnd

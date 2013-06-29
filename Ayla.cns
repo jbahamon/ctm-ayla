@@ -14,7 +14,7 @@ fall.defence_up = 50
 ;Time which player lies down for, before getting up
 liedown.time = 60
 ;Number of points for juggling
-airjuggle = 32
+airjuggle = 20
 ;Default hit spark number for HitDefs
 sparkno = 2
 ;Default guard spark number
@@ -171,14 +171,15 @@ ctrl = 1
 type = PowerAdd
 trigger1 = Var(21) > 0 && StateNo != 2110 && StateNo != [2100, 2102]
 value = -10
+ignorehitpause = 1
 
 [State -3: VarSet]
 type = VarSet
-trigger1 = (MoveType = H) || (Roundstate = 3)
+trigger1 = (Roundstate = 3)
 v = 21
 value = 0
 
-[State -3, CustomCombo]
+[State -3, Berserker]
 type = VarSet
 trigger1 = Var(21) > 0 && !Power && StateNo != [2100, 2102]
 var(21) = 0
@@ -191,6 +192,11 @@ add = 132,16,0
 sinadd = 164,32,5,2
 ignorehitpause = 1
 
+[State -3: AssertSpecial]
+type = AssertSpecial
+trigger1 = (Var(21) > 0)
+flag = NoJuggleCheck
+
 [State -3: ChangeAnim]
 type = ChangeAnim
 triggerall = (Var(21) > 0) && (RoundState = 2) && (MoveType != H) && StateNo != [2100, 2102]
@@ -200,11 +206,10 @@ ignorehitpause = 1
 value = Anim
 elem = AnimElemNo(0) + 1
 
-
 [State -3: AttackMulSet]
 type = AttackMulSet
 trigger1 = (Var(21) > 0)
-value = 0.3
+value = 0.4
 ignorehitpause = 1
 
 [State -3: AttackMulSet]
@@ -223,12 +228,6 @@ type = RemapPal
 trigger1 = (Var(21) != 0)
 source = 1, 1
 dest = 2, palno
-
-[State -3, print]
-trigger1 = 1
-type = DisplayToClipboard
-text = "%d"
-params = Var(21)
 
 ;This controller plays a sound everytime Ayla lands from a jump, or
 ;from his back-dash.

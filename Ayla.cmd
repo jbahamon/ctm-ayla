@@ -600,7 +600,7 @@ trigger1 = (command = "recovery" || command = "2p") && (command = "holdfwd" || c
 trigger1 = roundstate = 2 && ctrl && statetype = S && stateno != 100
 value = 800
 
-[State -1, Custom Combo]
+[State -1, Berserker]
 type = ChangeState
 value = 2110
 triggerall = Command = "2p" && !(command = "holdfwd" || command = "holdback")

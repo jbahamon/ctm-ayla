@@ -149,6 +149,32 @@ command.buffer.time = 1
 ;-| Super Motions |--------------------------------------------------------
 
 [Command]
+name = "qcfhcba"
+command = ~D, F, D, B, a
+time = 40
+[Command]
+name = "qcfhcbb"
+command = ~D, F, D, B, b
+time = 40
+[Command]
+name = "qcfhcbc"
+command = ~D, F, D, B, c
+time = 40
+[Command]
+name = "qcfhcba"
+command = ~D, F, D, B, ~a
+time = 40
+[Command]
+name = "qcfhcbb"
+command = ~D, F, D, B, ~b
+time = 40
+[Command]
+name = "qcfhcbc"
+command = ~D, F, D, B, ~c
+time = 40
+
+
+[Command]
 name = "qcbhcfa"
 command = ~D, B, D, F, a
 time = 40
@@ -511,7 +537,8 @@ trigger1 = ctrl
 [State -1, SGS]
 type = ChangeState
 value = 2100
-triggerall = Command = "Shun Goku Satsu"
+;triggerall = Command = "Shun Goku Satsu"
+triggerall = Command = "qcfhcba" || Command = "qcfhcbb" || Command = "qcfhcbc"
 triggerall = Var(21) > 0
 trigger1 = statetype != A
 trigger1 = ctrl || ((stateno = [200, 299]) && time <= 10)
@@ -605,6 +632,7 @@ type = ChangeState
 value = 2110
 triggerall = Command = "2p" && !(command = "holdfwd" || command = "holdback")
 triggerall = Power >= 3000
+triggerall = Var(21) = 0
 trigger1 = StateType != A
 trigger1 = ctrl 
 

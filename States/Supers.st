@@ -1777,6 +1777,11 @@ type = S
 movetype = H
 physics = S
 
+[State 2105, Exit]
+type = SelfState
+trigger1 = !gethitvar(isbound)
+value = 5050
+
 [State 2105, Anim]
 trigger1 = !Time
 type = ChangeAnim2

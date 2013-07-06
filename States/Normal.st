@@ -254,7 +254,7 @@ type = HitDef
 trigger1 = Animelem = 2
 attr = S, NA
 animtype  = Hard
-damage    = 62
+damage    = IfElse(Var(21) > 0, 42, 62)
 guardflag = MAF
 pausetime = 12,12
 sparkno = S7002
@@ -437,7 +437,7 @@ ctrl = 1
 type    = C
 movetype= A
 physics = C
-juggle  = 8
+juggle  = 6
 poweradd= IfElse(Var(21) > 0, 0, 18)
 velset = 0,0
 ctrl = 0

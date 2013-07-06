@@ -209,7 +209,7 @@ elem = AnimElemNo(0) + 1
 [State -3: AttackMulSet]
 type = AttackMulSet
 trigger1 = (Var(21) > 0)
-value = 0.4
+value = 0.52
 ignorehitpause = 1
 
 [State -3: AttackMulSet]

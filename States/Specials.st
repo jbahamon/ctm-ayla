@@ -818,10 +818,15 @@ anim = 1040
 sprpriority = 1
 facep2 = 1
 
+[State 1010, Strength]
+type = VarSet
+trigger1 = !Time
+var(0) = ifelse(command = "qcbc", 2, ifelse(command = "qcbb", 1, 0))
+
 [State 1040, Vel]
 type = VelSet
 trigger1 = !Time
-x = 3
+x = IfElse(var(0) = 2, 0, IfElse(var(0) = 1, 1.5, 3))
 
 [State 1040, Vel]
 type = VelSet
@@ -844,13 +849,13 @@ channel = 0
 [State 1040, Vel]
 type = VelSet
 trigger1 = AnimElemNo(0) = [2,9]
-y = 0
+y = IfElse(var(0) = 2, -4, IfElse(var(0) = 1, -2.3, 0))
 
 [State 1250, Hit]
 type = HitDef
 trigger1 = animelem = 2 || animelem = 6 
 attr = A, SA
-damage = 47, 7
+damage = IfElse(var(0) = 2, 67, IfElse(var(0) = 1, 57, 47)), 7
 animtype = Hard
 guardflag = HA
 hitflag = MAF
@@ -863,9 +868,9 @@ guardsound = s2, 0
 ground.type = High
 ground.slidetime = 16
 ground.hittime = 16
-ground.velocity = -2, -7
+ground.velocity = IfElse(var(0) = 2, 0, IfElse(var(0) = 1, -1, -2)), IfElse(var(0) = 2, -8, IfElse(var(0) = 1, -6, -4))
 air.type = Low
-air.velocity = -2, -6
+air.velocity = IfElse(var(0) = 2, 0, IfElse(var(0) = 1, -1, -2)), IfElse(var(0) = 2, -8, IfElse(var(0) = 1, -6, -4))
 air.cornerpush.veloff = 0
 ground.cornerpush.veloff = 0
 guard.velocity = -10.52

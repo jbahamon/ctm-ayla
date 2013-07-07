@@ -537,7 +537,6 @@ trigger1 = ctrl
 [State -1, SGS]
 type = ChangeState
 value = 2100
-;triggerall = Command = "Shun Goku Satsu"
 triggerall = Command = "qcfhcba" || Command = "qcfhcbb" || Command = "qcfhcbc"
 triggerall = Var(21) > 0
 trigger1 = statetype != A
@@ -630,10 +629,10 @@ value = 800
 [State -1, Berserker]
 type = ChangeState
 value = 2110
-triggerall = Command = "2p" && !(command = "holdfwd" || command = "holdback")
+triggerall = Command = "2p" && !(command = "holdfwd" || command = "holdback" || command = "holdup" || command = "holddown")
 triggerall = Power >= 3000
 triggerall = Var(21) = 0
-trigger1 = StateType != A
+trigger1 = StateType = S
 trigger1 = ctrl 
 
 ;===========================================================================

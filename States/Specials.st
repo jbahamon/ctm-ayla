@@ -343,7 +343,7 @@ palfx.time = 8
 
 [State 1021, ChangeState]
 type = ChangeState
-trigger1 = pos y >= 1 || (parent, StateNo != 1020 && !var(1)) || HitCount > 0
+trigger1 = (Vel Y > 0 && pos y >= - Vel Y) || (parent, StateNo != 1020 && !var(1)) || HitCount > 0
 value = 1022
 ctrl = 0
 ignorehitpause = 1

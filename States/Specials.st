@@ -258,15 +258,15 @@ var(1) = 0
 type = HitOverride
 trigger1 = 1
 time = -1
-attr = SCA, AA, AP, AT
+attr = , AA, AP
 stateno = 1022
 ignorehitpause = 1
 
 [State 1021, HB]
-type = HitBy
+type = NotHitBy
 trigger1 = 1
 time = -1
-value = SCA, NP, SP, HP
+value = , AT
 ignorehitpause = 1
 
 [State 1021, PosSet]
@@ -875,7 +875,7 @@ air.cornerpush.veloff = 0
 ground.cornerpush.veloff = 0
 guard.velocity = -10.52
 guard.cornerpush.veloff = 0;-12.74
-getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 72, 144)), IfElse(Var(21) > 0, 0, 36)
+getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 36, 72)), IfElse(Var(21) > 0, 0, 18)
 givepower = 36, 36
 envshake.time = 16
 envshake.freq = 120
@@ -910,14 +910,14 @@ guardsound = s2, 0
 ground.type = High
 ground.slidetime = 16
 ground.hittime = 16
-ground.velocity = 2, -7
+ground.velocity = IfElse(var(0) = 2, 0, IfElse(var(0) = 1, 1, 2)), IfElse(var(0) = 2, -8, IfElse(var(0) = 1, -6, -4))
 air.type = Low
-air.velocity = 2, -6
+air.velocity = IfElse(var(0) = 2, 0, IfElse(var(0) = 1, 1, 2)), IfElse(var(0) = 2, -8, IfElse(var(0) = 1, -6, -4))
 air.cornerpush.veloff = 0
 ground.cornerpush.veloff = 0
 guard.velocity = -10.52
 guard.cornerpush.veloff = 0;-12.74
-getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 72, 144)), IfElse(Var(21) > 0, 0, 36)
+getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 36, 72)), IfElse(Var(21) > 0, 0, 18)
 givepower = 36, 36
 envshake.time = 16
 envshake.freq = 120

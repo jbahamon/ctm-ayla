@@ -169,8 +169,9 @@ ctrl = 1
 
 [State -3: AttackMulSet]
 type = RemapPal
-trigger1 = (Var(21) != 0)
-trigger1 = Power <= 5
+trigger1 = Var(21) > 0
+trigger1 = !Power && StateNo != [2100, 2102]
+trigger1 = !(var(21) := 0)
 source = 1, 1
 dest = 1, palno
 
@@ -184,7 +185,7 @@ dest = 2, palno
 [State -3, CustomCombo]
 type = PowerAdd
 trigger1 = Var(21) > 0 && StateNo != 2110 && StateNo != [2100, 2102]
-value = -10
+value = IfElse(Power > 10, -10, -Power)
 ignorehitpause = 1
 
 [State -3: VarSet]
@@ -192,11 +193,6 @@ type = VarSet
 trigger1 = (Roundstate = 3)
 v = 21
 value = 0
-
-[State -3, Berserker]
-type = VarSet
-trigger1 = Var(21) > 0 && !Power && StateNo != [2100, 2102]
-var(21) = 0
 
 [State -3: PalFX]
 type = PalFX

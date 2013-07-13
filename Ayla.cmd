@@ -603,6 +603,7 @@ trigger1 = Pos Y < 0
 [State -1, Cat Attack]
 type = ChangeState
 value = 1030
+triggerall = Power >= 200
 triggerall = Command = "qcba" || Command = "qcbb" || Command = "qcbc" 
 trigger1 = statetype != A
 trigger1 = ctrl

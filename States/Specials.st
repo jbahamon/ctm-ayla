@@ -417,6 +417,7 @@ ctrl = 0
 anim = 1030
 sprpriority = 1
 facep2 = 1
+poweradd = -200
 velset = 0,0
 
 [State 1030, Jump]
@@ -514,7 +515,7 @@ juggle  = 3
 ctrl = 0
 anim = 1031
 sprpriority = 1
-poweradd = 72
+poweradd = 0
 velset = 0,0
 
 [State 1031, Measure]
@@ -770,7 +771,7 @@ ground.slidetime = 14
 ground.hittime  = 17
 ground.velocity = -4
 air.velocity = -4,-2
-getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 72, 216)), IfElse(Var(21) > 0, 0, 36)
+getpower = 0, 0
 givepower = 36, 36
 palfx.add = 200, 200, 200
 palfx.mul = 256, 256, 256

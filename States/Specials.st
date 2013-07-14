@@ -492,7 +492,7 @@ ctrl = 0
 
 [State 1030, Hit]
 type = HitDef
-trigger1 = !Time
+trigger1 = !Time && !Var(21)
 attr = A, ST 
 hitflag = M-
 priority = 2, Miss

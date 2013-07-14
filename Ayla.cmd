@@ -596,9 +596,10 @@ trigger2 = (stateno = [200, 299]) && movecontact
 [State -1, Cat Attack into Drill Kick]
 type = ChangeState
 value = 1034
-triggerall = Command = "a" || Command = "b" || Command = "c"
-trigger1 = StateNo = 1030 && !MoveContact
-trigger1 = Pos Y < 0
+triggerall = StateNo = 1030 && !MoveContact
+triggerall = Pos Y < 0
+trigger1 = Command = "a" || Command = "b" || Command = "c"
+trigger2 = Vel Y > 0 && Var(21)
 ;---------------------------------------------------------------------------
 [State -1, Cat Attack]
 type = ChangeState

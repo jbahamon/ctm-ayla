@@ -1374,7 +1374,7 @@ trigger1 = var(0) = 1
 [Statedef 2026]
 type = S
 movetype = I
-anim = IfElse(random % 2 = 0, 7104, 7105)
+anim = IfElse(random % 4 = 0, 7109, IfElse(random % 2 = 0, 7108, 7107))
 physics = N
 velset = 0,-4
 sprpriority = random % 3
@@ -1403,7 +1403,7 @@ value = (5 + (random % 5))* var(0)
 ignorehitpause = 1
 
 [State 2022, Rotate]
-type = AngleDraw
+type = null;AngleDraw
 trigger1 = 1
 ignorehitpause = 1
 
@@ -1543,6 +1543,12 @@ p2sprpriority = 1
 p1stateno = 2102
 fall = 1 
 fall.recover = 0
+
+[State 2101, End]
+type = ChangeState
+trigger1 = Time > 80
+value = 0
+ctrl = 1
 
 ;SKS - Hitting
 [Statedef 2102]

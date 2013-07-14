@@ -1597,6 +1597,18 @@ Clsn2:1
 7011,3, 1,1, -1
 
 
+; Small Debris
+[Begin Action 7107]
+7012,0, 0,0, -1
+
+; Mid Debris
+[Begin Action 7108]
+7012,1, 0,0, -1
+
+; Big Debris
+[Begin Action 7109]
+7012,2, 0,0, 2
+
 ; Dactyl Big - Flapping
 [Begin Action 7111]
 7021,1, 0,0, 12

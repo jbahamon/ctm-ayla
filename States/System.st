@@ -146,7 +146,7 @@ value = 191
 [State 191, Intro Time]
 type = VarSet
 trigger1 = !Time
-var(1) = 0
+var(1) = -100
 
 [State 191, Intro Time]
 type = VarAdd
@@ -156,11 +156,11 @@ var(1) = 1
 [State 191, Start Pos]
 type = PosSet
 trigger1 = !Time
-Y = -140
+Y = -240
 X = -110 * Facing
 
 [State 191, Scale]
-type = AngleDraw
+type = null;AngleDraw
 trigger1 = Var(1) < 100
 scale = (var(1))/100.0, (var(1))/100.0
 
@@ -267,10 +267,10 @@ X = -110*Facing
 [State 1910, Vel]
 type = VelSet
 trigger1 = 1
-Y = 1.4 * Parent, Var(1)/100.0
+Y = 1.4 
 
 [State 1910, Scale]
-type = AngleDraw
+type = null;AngleDraw
 trigger1 = Parent, Var(1) < 100
 scale = (Parent, Var(1))/100.0, (Parent, Var(1))/100.0
 

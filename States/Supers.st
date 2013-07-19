@@ -1598,7 +1598,7 @@ value = 1
 type = TargetLifeAdd
 trigger1 = AnimElem = 2  || AnimElem = 3  || AnimElem = 4  || AnimElem = 5  || AnimElem = 6  || AnimElem = 7  || AnimElem = 8 || Animelem = 9
 trigger2 = AnimElem = 10 || AnimElem = 11 || AnimElem = 12 || AnimElem = 13 || AnimElem = 14 || AnimElem = 15 || AnimElem = 16
-value = - 20
+value = - 16
 kill = (AnimElemNo(0) > 15)
 
 [State 2102, givepower]

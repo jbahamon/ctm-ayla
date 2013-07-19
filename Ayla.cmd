@@ -393,7 +393,7 @@ command = b+c
 time = 1
 
 [Command]
-name = "2p"
+name = "a+c"
 command = a+c
 time = 1
 
@@ -627,7 +627,7 @@ value = 800
 [State -1, Berserker]
 type = ChangeState
 value = 2110
-triggerall = Command = "2p" && !(command = "holdfwd" || command = "holdback" || command = "holdup" || command = "holddown")
+triggerall = Command = "a+c" && !(command = "holdfwd" || command = "holdback" || command = "holdup" || command = "holddown")
 triggerall = Power >= 3000
 triggerall = Var(21) = 0
 trigger1 = StateType = S

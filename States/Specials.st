@@ -258,7 +258,7 @@ var(1) = 0
 type = HitOverride
 trigger1 = 1
 time = -1
-attr = , AA, AP
+attr = SCA, AA, AP
 stateno = 1022
 ignorehitpause = 1
 
@@ -266,7 +266,7 @@ ignorehitpause = 1
 type = NotHitBy
 trigger1 = 1
 time = -1
-value = , AT
+value = SCA,NT,ST,HT 
 ignorehitpause = 1
 
 [State 1021, PosSet]

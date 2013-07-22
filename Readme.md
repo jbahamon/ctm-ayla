@@ -14,6 +14,9 @@ What's missing:
 Ayla's Moveset
 ==============
 
+Ayla is meant to be a rushdown character. She walks and runs faster than other 
+characters. Her jumps are faster, too. Keep pressuring your opponent!
+
 Throws
 --------------
 

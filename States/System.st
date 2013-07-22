@@ -143,26 +143,11 @@ type = ChangeAnim
 trigger1 = RoundState = 0
 value = 191
 
-[State 191, Intro Time]
-type = VarSet
-trigger1 = !Time
-var(1) = -100
-
-[State 191, Intro Time]
-type = VarAdd
-trigger1 = Var(1) <= 100 && RoundState > 0 
-var(1) = 1
-
 [State 191, Start Pos]
 type = PosSet
 trigger1 = !Time
-Y = -240
+Y = -180
 X = -110 * Facing
-
-[State 191, Scale]
-type = null;AngleDraw
-trigger1 = Var(1) < 100
-scale = (var(1))/100.0, (var(1))/100.0
 
 [State 191, 1] ;Freeze animation until PreIntro is over
 type = Helper
@@ -182,7 +167,7 @@ type = PosSet
 triggerall = NumHelper(1910)
 trigger1 = Anim = 191
 X = Helper(1910), Pos X
-Y = (Helper(1910), Pos Y) - (25*Var(1)/100.0)
+Y = (Helper(1910), Pos Y) - 25
 
 [State 191, Jump!]
 type = ChangeAnim
@@ -251,54 +236,17 @@ type = ChangeState
 trigger1 = Anim = 0 && !NumHelper(1910)
 value = 0
 
-;Dactyl Zooming in
+;Dactyl Landing and Leaving
 [Statedef 1910]
 type = S
 ctrl = 0
 anim = 7111
-velset = 0,0
-sprpriority = 2
-
-[State 1910, Vel]
-type = PosSet
-trigger1 = 1
-X = -110*Facing
-
-[State 1910, Vel]
-type = VelSet
-trigger1 = 1
-Y = 1.4 
-
-[State 1910, Scale]
-type = null;AngleDraw
-trigger1 = Parent, Var(1) < 100
-scale = (Parent, Var(1))/100.0, (Parent, Var(1))/100.0
-
-[State 1910, Snd]
-type = PlaySnd
-trigger1 = Anim = 7111 && (AnimElemTime(1) = 0 || !AnimTime)
-value = S7000,0
-volumescale = (Parent, Var(1))
-
-[State 1910, Advance]
-type = ChangeState
-trigger1 = Parent, Var(1) >= 100
-value = 1911
-
-[State 1910, Takeoff]
-type = DestroySelf
-trigger1 = RoundState > 1
-
-;Dactyl Landing and Leaving
-[Statedef 1911]
-type = S
-ctrl = 0
-velset = 0,0
 sprpriority = 2
 
 [State 1911, Vel]
 type = VelSet
-trigger1 = !Time && !(var(0) := 0)
+trigger1 = !Time
+trigger1 = !(var(0) := 0)
 Y = 0.7
 
 [State 1911, Snd]
@@ -312,11 +260,6 @@ trigger1 = Anim = 7111 && (AnimElemTime(1) = 0 || !AnimTime)
 trigger2 = Anim = 7112 && (AnimElemTime(1) = 1)
 trigger3 = Anim = 7113 && (AnimElemTime(1) = 0 || !AnimTime)
 value = S7000,0
-
-[State 1911, Vel]
-type = VarSet
-trigger1 = !Time
-var(0) = 0
 
 [State 1911, Vel]
 type = ChangeAnim
@@ -349,6 +292,7 @@ persistent = 0
 [State 1911, Takeoff]
 type = ChangeAnim
 trigger1 = Anim = 7113 && !AnimTime
+trigger1 = (var(0) := 1)
 value = 7111
 persistent = 0
 
@@ -366,6 +310,7 @@ Y = -0.04
 [State 1911, Takeoff]
 type = DestroySelf
 trigger1 = ScreenPos Y < -30
+trigger1 = var(0) > 0
 trigger2 = RoundState > 1
 
 ;---------------------------------------------------------------------------

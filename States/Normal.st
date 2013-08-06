@@ -953,31 +953,31 @@ value = 804
 
 [State 803, Life]
 type = LifeAdd
-trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = (Vel y > 0) && (Pos y >= - Vel Y)
 value = -105
 
 [State 803, Pal]
 type = PalFX
-trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = (Vel y > 0) && (Pos y >= - Vel Y)
 add = 200, 200, 200
 mul = 256, 256, 256
 time = 8
 
 [State 803, Life]
 type = EnvShake
-trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = (Vel y > 0) && (Pos y >= - Vel Y)
 time = 14
 freq = 120
 ampl = 4
 
 [State 803, Life]
 type = PosSet
-trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = (Vel y > 0) && (Pos y >= - Vel Y)
 y = 0
 
 [State 803, Hit Ground]
 type = SelfState
-trigger1 = (Vel y > 0) && (Pos y >= 0)
+trigger1 = (Vel y > 0) && (Pos y >= - Vel Y)
 value = 5100
 ctrl = 0
 

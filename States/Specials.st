@@ -417,7 +417,7 @@ ctrl = 0
 anim = 1030
 sprpriority = 1
 facep2 = 1
-poweradd = -200
+poweradd = -500
 velset = 0,0
 
 [State 1030, Jump]
@@ -759,7 +759,7 @@ type = HitDef
 trigger1 = !Time
 attr = A, SA
 animtype  = Hard
-damage    = 98, 7
+damage    = 128, 7
 guardflag = MAF
 pausetime = 12,12
 sparkno = S7008

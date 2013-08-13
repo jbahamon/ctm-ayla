@@ -954,7 +954,7 @@ value = 804
 [State 803, Life]
 type = LifeAdd
 trigger1 = (Vel y > 0) && (Pos y >= - Vel Y)
-value = -105
+value = -75
 
 [State 803, Pal]
 type = PalFX

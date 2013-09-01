@@ -312,7 +312,7 @@ value = S7010, 1
 type = HitDef
 trigger1 = Time = 0
 attr = C, NA
-damage    = 19
+damage    = 11
 priority  = 3
 animtype  = Light
 hitflag = MAF
@@ -325,15 +325,15 @@ guardsound = 6,0
 ground.type = Low
 ground.slidetime = 4
 ground.hittime  = 9
-ground.velocity = -2
-air.velocity = -1.5,-3
+ground.velocity = -1.3
+air.velocity = -1.3,-3
 getpower = IfElse(Var(21) > 0, 0, 72), IfElse(Var(21) > 0, 0, 36)
 givepower = 36, 36
 palfx.add = 200, 200, 200
 palfx.mul = 256, 256, 256
 palfx.time = 8
-ground.cornerpush.veloff = -2
-air.cornerpush.veloff = -2
+ground.cornerpush.veloff = -1.3
+air.cornerpush.veloff = -1.3
 
 [State 400, 3]
 type = CtrlSet
@@ -518,7 +518,7 @@ ignorehitpause = 1
 [State 420, 3]
 type = ChangeState
 trigger1 = Anim = 11
-trigger1 = Time >= 50
+trigger1 = Time >= 25
 value = 11
 ctrl = 1
 

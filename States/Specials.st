@@ -209,9 +209,9 @@ postype = p1  ;p2,front,back,left,right
 facing = 1
 vfacing = 1
 bindtime = 1
-vel = 1 + 0.8 * (random)/1000.0 ,-5 + 2 * (random - 500.0)/500.0
+vel = 1 + 0.8 * (random)/1000.0 ,-3 + 2 * (random - 500.0)/500.0
 accel = 0,.52
-removetime = 15
+removetime = 10
 scale = 1 + 0.1 * (random - 500.0)/500.0 ,1 + 0.1 * (random - 500.0)/500.0
 sprpriority = 4
 ontop = 0
@@ -241,8 +241,8 @@ ctrl = 1
 ; The Rock
 [Statedef 1021]
 type    = S
-movetype= I
-physics = S
+movetype= A
+physics = N
 juggle  = 3
 ctrl = 0
 anim = 7100
@@ -252,7 +252,6 @@ sprpriority = 3
 type = VarSet
 trigger1 = !Time
 var(0) = parent, var(0)
-var(1) = 0
 
 [State 1021, HitOverride]
 type = HitOverride
@@ -271,45 +270,18 @@ ignorehitpause = 1
 
 [State 1021, PosSet]
 type = VelSet
-trigger1 = parent, AnimElem = 3 && parent, StateNo = 1020
-y = -8
-
-[State 1021, PosSet]
-type = VelSet
-trigger1 = time > 0 && parent, AnimElemNo(0) = 3 && parent, AnimElemTime(3) < 6 && parent, StateNo = 1020
-x = -4
-
-[State 1021, PosSet]
-type = VelMul
-trigger1 = time > 0 && parent, AnimElemNo(0) = 3 && parent, AnimElemTime(3) < 6  && parent, StateNo = 1020
-y = 0.64
-
-[State 1021, PosSet]
-type = VarSet
-trigger1 = parent, AnimElem = 4 && parent, StateNo = 1020
-var(1) = 1
-
-[State 1021, PosSet]
-type = VelSet
-trigger1 = parent, AnimElem = 4 && parent, StateNo = 1020
-x = IfElse(var(0) = 0, 6,IfElse(var(0) = 1, 5, 6))
-y = IfElse(var(0) = 0, -2,IfElse(var(0) = 1, -4, -5))
+trigger1 = !Time
+x = 1.1
+y = -6
 
 [State 1021, PosSet]
 type = VelAdd
-trigger1 = var(1)
-y = IfElse(var(0) = 0, .56,IfElse(var(0) = 1, .53, .5))
-
-[State 1021, PosSet]
-type = StateTypeSet
-trigger1 = parent, AnimElem = 4 && parent, StateNo = 1020
-statetype = S
-movetype = A
-physics = N
+trigger1 = 1
+y = .43
 
 [State 1021, HitDef]
 type = HitDef
-trigger1 = parent, AnimElem = 4 && parent, StateNo = 1020
+trigger1 = !Time
 attr = S, SP
 hitflag = MAF        ;HLAFD+-
 guardflag = MA         ;HLA
@@ -343,7 +315,8 @@ palfx.time = 8
 
 [State 1021, ChangeState]
 type = ChangeState
-trigger1 = (Vel Y > 0 && pos y >= - Vel Y) || (parent, StateNo != 1020 && !var(1)) || HitCount > 0
+trigger1 = HitCount > 0
+trigger2 = Pos Y > - Vel Y && Vel Y > 0
 value = 1022
 ctrl = 0
 ignorehitpause = 1

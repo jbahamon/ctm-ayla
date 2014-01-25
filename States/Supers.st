@@ -1120,14 +1120,6 @@ trigger1 = 1
 value = 0
 ignorehitpause =  1
 
-
-[State 2022, Var]
-type = VarSet
-trigger1 = NumHelper(2022)
-fvar(0) = (Helper(2022), Pos X - Pos X)
-persistent = 0
-ignorehitpause = 1
-
 [State 2022, Var]
 type = VarSet
 trigger1 = !Time
@@ -1139,13 +1131,6 @@ ignorehitpause = 1
 type = VarSet
 trigger1 = !Time
 fvar(3) = Target, Pos Y
-persistent = 0
-ignorehitpause = 1
-
-[State 2022, Var]
-type = VarSet
-trigger1 = !Time
-fvar(2) = Target, Pos X
 persistent = 0
 ignorehitpause = 1
 
@@ -1421,7 +1406,7 @@ ignorehitpause = 1
 
 ;---------------------------------------------------------------------------
 
-;SKS - start
+;SKS - Start
 [Statedef 2100]
 type    = S
 movetype= A

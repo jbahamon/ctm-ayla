@@ -15,6 +15,13 @@ sprpriority = 1
 poweradd = IfElse(Var(21) > 0, 0, 72)
 facep2 = 1
 
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.85
+persistent = 0
+ignorehitpause = 1
+
 [State 1010, Strength]
 type = VarSet
 trigger1 = !Time
@@ -248,6 +255,13 @@ ctrl = 0
 anim = 7100
 sprpriority = 3
 
+[State 1001, Dampen]
+Type = ParentVarset
+Trigger1 = MoveHit
+fvar(39) = parent, Fvar(39)*0.86
+persistent = 0
+ignorehitpause = 1
+
 [State 1021, PosSet]
 type = VarSet
 trigger1 = !Time
@@ -287,7 +301,7 @@ hitflag = MAF        ;HLAFD+-
 guardflag = MA         ;HLA
 animtype = Hard
 sparkno = S7001
-damage = 72,0
+damage = Floor(72 * IfElse(Parent, Var(21) > 0, 0.52, Parent, FVar(39))),0
 sparkxy = -10,-15
 hitsound = S220,1
 ground.type = High
@@ -689,6 +703,13 @@ movetype = A
 physics = N
 anim = 1034
 
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.85
+persistent = 0
+ignorehitpause = 1
+
 [State 1034, Stop]
 type = VelAdd
 trigger1 = 1
@@ -733,7 +754,8 @@ trigger1 = !Time
 attr = A, SA
 animtype  = Hard
 damage    = 128, 7
-guardflag = MAF
+guardflag = MA
+hitflag = MAF
 pausetime = 12,12
 sparkno = S7008
 sparkxy = -10, 0
@@ -791,6 +813,13 @@ ctrl = 0
 anim = 1040
 sprpriority = 1
 facep2 = 1
+
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.85
+persistent = 0
+ignorehitpause = 1
 
 [State 1010, Strength]
 type = VarSet

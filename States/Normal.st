@@ -77,6 +77,13 @@ givepower = 36, 36
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
 
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.95
+persistent = 0
+ignorehitpause = 1
+
 [State 200, 2]
 type = PlaySnd
 trigger1 = AnimElem = 2
@@ -192,6 +199,13 @@ palfx.add = 200, 200, 200
 palfx.mul = 256, 256, 256
 palfx.time = 8
 
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.85
+persistent = 0
+ignorehitpause = 1
+
 [State 210, 4]
 type = SprPriority
 trigger1 = AnimElem = 5
@@ -216,6 +230,13 @@ velset = 0,0
 anim = 220
 sprpriority = 1
 facep2 = 1
+
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.78
+persistent = 0
+ignorehitpause = 1
 
 [State 220, VelSet]
 type = Velset
@@ -255,7 +276,8 @@ trigger1 = Animelem = 2
 attr = S, NA
 animtype  = Hard
 damage    = IfElse(Var(21) > 0, 42, 62)
-guardflag = MAF
+guardflag = HA
+hitflag = MAF
 pausetime = 12,12
 sparkno = S7002
 sparkxy = -10, 4
@@ -335,6 +357,13 @@ palfx.time = 8
 ground.cornerpush.veloff = -1.3
 air.cornerpush.veloff = -1.3
 
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.95
+persistent = 0
+ignorehitpause = 1
+
 [State 400, 3]
 type = CtrlSet
 trigger1 = Time = 6
@@ -358,6 +387,13 @@ ctrl = 0
 anim = 410
 sprpriority = 1
 facep2 = 1
+
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.85
+persistent = 0
+ignorehitpause = 1
 
 [State 410, VelSet]
 type = Velset
@@ -402,7 +438,7 @@ ignorehitpause = 1
 type = HitDef
 trigger1 = AnimElem = 2
 attr = C, NA
-damage    = 37
+damage    = 42
 animtype  = Medium
 hitflag = MAF
 guardflag = L
@@ -444,6 +480,13 @@ ctrl = 0
 anim = 420
 sprpriority = 1
 facep2 = 1
+
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.78
+persistent = 0
+ignorehitpause = 1
 
 [State 420, VelSet]
 type = Velset
@@ -539,6 +582,13 @@ anim = 600
 sprpriority = 1
 facep2 = 1
 
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.95
+persistent = 0
+ignorehitpause = 1
+
 [State 600, 1]
 type = PlaySnd
 trigger1 = Time = 1
@@ -572,6 +622,7 @@ trigger1 = Time = 0
 attr = A, NA
 damage    = 20
 guardflag = HA
+hitflag = MAF
 priority = 3
 pausetime = 7,8
 sparkno = S7000
@@ -606,6 +657,13 @@ poweradd= IfElse(Var(21) > 0, 0, 18)
 ctrl = 0
 anim = 610
 sprpriority = 1
+
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.85
+persistent = 0
+ignorehitpause = 1
 
 [State 610, 2]
 type = PlaySnd
@@ -662,6 +720,7 @@ type = HitDef
 trigger1 = Time = 0
 attr = A, NA
 damage = 40
+hitflag = MAF
 guardflag = HA
 priority = 4
 pausetime = 12,12
@@ -722,6 +781,13 @@ anim = 620
 sprpriority = 1
 facep2 = 1
 
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.78
+persistent = 0
+ignorehitpause = 1
+
 [State 630, 1]
 type = PlaySnd
 trigger1 = AnimElem = 2
@@ -749,12 +815,12 @@ ownpal = 1
 removeongethit = 1
 ignorehitpause = 1
 
-
 [State 630, 2]
 type = HitDef
 trigger1 = Time = 0
 attr = A, NA
 damage = 60
+hitflag = MAF
 guardflag = HA
 priority = 3
 pausetime = 8,8

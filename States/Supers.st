@@ -144,6 +144,13 @@ ctrl = 0
 anim = 7050
 sprpriority = 2
 
+[State 1001, Dampen]
+Type = ParentVarset
+Trigger1 = MoveHit
+fvar(39) = parent, Fvar(39)*0.9
+persistent = 0
+ignorehitpause = 1
+
 [State 2001, trans]
 type = Trans
 trigger1 = Time < 16
@@ -186,7 +193,7 @@ scale = 1 + 0.4 * sin(pi * (-time/30.0) + pi/2), 1 + 0.4 * sin(pi * (-time/30.0)
 type = HitDef
 trigger1 = Time % 20 = 10
 attr = S, HP
-damage    = 12
+damage    = Floor(13* IfElse(Parent, Var(21) > 0, 0.52, Parent, FVar(39)))
 animtype  = Hard
 hitflag = MAF
 guardflag = M
@@ -255,6 +262,13 @@ ctrl = 0
 anim = 7050
 sprpriority = 2
 
+[State 1001, Dampen]
+Type = ParentVarset
+Trigger1 = MoveHit
+fvar(39) = parent, Fvar(39)*0.9
+persistent = 0
+ignorehitpause = 1
+
 [State 2002, trans]
 type = Trans
 trigger1 = Time < 16
@@ -297,7 +311,7 @@ scale = 1 + 0.4 * sin(pi * (-time/30.0) + pi/2 + pi), 1 + 0.4 * sin(pi * (-time/
 type = HitDef
 trigger1 = Time % 20 = 10
 attr = S, HP
-damage    = 12
+damage    = Floor(13* IfElse(Parent, Var(21) > 0, 0.52, Parent, FVar(39)))
 animtype  = Hard
 priority = 5, Hit
 hitflag = MAF
@@ -501,6 +515,13 @@ movecamera = 0,0
 value = 0
 ignorehitpause = 1
 
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.9
+persistent = 0
+ignorehitpause = 1
+
 [State 2011, Hit]
 type = HitDef
 trigger1 = !Time
@@ -509,7 +530,7 @@ hitflag = MAF        ;HLAFD+-
 guardflag = MA         ;HLA
 animtype = Hard
 sparkno = S7008
-damage = 62,0
+damage = 48,0
 sparkxy = 0,0
 hitsound = S7020,5
 pausetime = 16, 60
@@ -545,6 +566,7 @@ var(0) = 0
 
 [State 2011, Var]
 type = VarSet
+triggerall = !MoveHit
 trigger1 = MoveContact && MoveGuarded
 trigger2 = ScreenPos X > EnemyNear(0), ScreenPos X && Vel X > 0
 trigger2 = Time > 20
@@ -680,6 +702,13 @@ sprpriority = 0
 ownpal = 1
 removeongethit = 0
 
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.9
+persistent = 0
+ignorehitpause = 1
+
 [State 2012, Hit]
 type = HitDef
 trigger1 = Anim != 2011 && AnimElem = 2
@@ -688,7 +717,7 @@ hitflag = MAF        ;HLAFD+-
 guardflag = MA         ;HLA
 animtype = Hard
 sparkno = -1
-damage = 64,0
+damage = 63,0
 sparkxy = 0,0
 hitsound = S7020,5
 pausetime = 16, 60
@@ -835,6 +864,13 @@ sprpriority = 0
 ownpal = 1
 removeongethit = 0
 
+[State 200, Dampen]
+Type=Varset
+Trigger1 = MoveHit
+fvar(39) = fvar(39)*0.9
+persistent = 0
+ignorehitpause = 1
+
 [State 2012, Hit]
 type = HitDef
 trigger1 = AnimElem = 2
@@ -843,7 +879,7 @@ hitflag = MAF        ;HLAFD+-
 guardflag = MA         ;HLA
 animtype = Hard
 sparkno = -1
-damage = 66,0
+damage = 68,0
 hitsound = S7020,5
 pausetime = 20, 20
 guard.pausetime = 16, 16
@@ -1204,7 +1240,7 @@ type = LifeAdd
 trigger1 = (Time = [0,70]) && ( Time % 32 = 0 )
 trigger2 = (Time = [71,140]) && ( Time % 16 = 0 )
 trigger3 = (Time = [141,210]) && ( Time % 8 = 0 )
-value = -10
+value = -8
 kill = 0
 
 [State 2023, Into the Air]
@@ -1253,7 +1289,7 @@ value = 804
 [State 2024, Life]
 type = LifeAdd
 trigger1 = (Vel y > 0) && (Pos y >= 0)
-value = -15
+value = -12
 
 [State 2024, Pal]
 type = PalFX

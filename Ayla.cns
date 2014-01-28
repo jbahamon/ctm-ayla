@@ -151,6 +151,22 @@ value = 2111
 ctrl = 1
 
 ;---------------------------------------------------------------------------
+; States that are always executed (use statedef -2)
+;---------------------------------------------------------------------------
+
+[Statedef -2]
+
+[State -2, Dampener]
+Type=VarSet
+Trigger1=Roundstate<2
+Trigger2=P2Stateno=[120,160]
+Trigger3=enemynear,ctrl
+Trigger4=P2StateType!=A
+Trigger4=P2MoveType!=H
+fvar(39)=1
+ignorehitpause=1
+
+;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
 ;---------------------------------------------------------------------------
 
@@ -215,16 +231,11 @@ ignorehitpause = 1
 value = Anim
 elem = AnimElemNo(0) + 1
 
-[State -3: AttackMulSet]
-type = AttackMulSet
-trigger1 = (Var(21) > 0)
-value = 0.52
+[State -3, Dampener]
+Type = AttackMulSet
+Trigger1 = 1
+value = IfElse(Var(21) > 0, 0.52, fvar(39))
 ignorehitpause = 1
-
-[State -3: AttackMulSet]
-type = AttackMulSet
-trigger1 = (Var(21) = 0)
-value = 1
 
 ;This controller plays a sound everytime Ayla lands from a jump, or
 ;from his back-dash.

@@ -858,7 +858,7 @@ y = IfElse(var(0) = 2, -4, IfElse(var(0) = 1, -2.3, 0))
 type = HitDef
 trigger1 = animelem = 2 || animelem = 6 
 attr = A, SA
-damage = IfElse(var(0) = 2, 67, IfElse(var(0) = 1, 57, 47)), 7
+damage = 57, 7
 animtype = Hard
 guardflag = HA
 hitflag = MAF

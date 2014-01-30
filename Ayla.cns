@@ -234,7 +234,7 @@ elem = AnimElemNo(0) + 1
 [State -3, Dampener]
 Type = AttackMulSet
 Trigger1 = 1
-value = IfElse(Var(21) > 0, 0.52, fvar(39))
+value = IfElse(Var(21) > 0, 0.72, fvar(39))
 ignorehitpause = 1
 
 ;This controller plays a sound everytime Ayla lands from a jump, or

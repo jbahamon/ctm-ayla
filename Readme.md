@@ -3,24 +3,31 @@ Ayla by SilentProtagonist
 =========================
 
 Ayla is a three-button character made for MUGEN 1.0.
-This is not a final version.
+This is not a final version but it should be playable.
 
 What's missing:
 
 - More palettes
-- Special intros/winposes, maybe.
+- Specific character interactions (intros, winposes, double techs, maybe)
 
+To me, Ayla's feels the most like a Street Fighter character out of
+all CT's characters.
+
+She has lots of sprites based on scratching, kicking and throwing so 
+it wasn't hard to imagine moves for her.
 
 Ayla's Moveset
 ==============
 
-Ayla is meant to be a rushdown character. She walks and runs faster than other 
-characters. Her jumps are faster, too. Keep pressuring your opponent!
+Ayla is meant to be sort of a rushdown character. She walks and 
+runs faster than other characters; her jumps are faster, too. 
+She does not work well at long distances, though, as her only 
+projectile has very low range.
 
 Throws
 --------------
 
-**Boulder Toss**: F/B + [a+b/b+c/a+c] (Standing).
+**Boulder Toss**: F/B + (a+b)/(b+c)/(a+c)  (Standing).
 
 A standard throw. The direction you press determines the
 direction your opponent will be thrown.
@@ -30,8 +37,8 @@ direction your opponent will be thrown.
 
 A special throw where Ayla jumps at the opponent,
 scratching and biting him/her if it connects.
-This attack only hits in the falling part of the jump.
-This attack can be cancelled into Drill Kick (see below).
+This attack only hits in the falling part of the jump;
+it can also be cancelled into Drill Kick (see below).
 
 
 Specials
@@ -39,7 +46,7 @@ Specials
 
 **Rock Throw**: D, DF, F + a/b/c (Standing).
 
-A standard projectile that travels in an arc.
+A projectile that travels in a very small arc.
 The speed and range of the rock depend on the button pressed.
 
 **Backflip Kick**: F, D, DF + a/b/c (Standing).
@@ -52,7 +59,6 @@ part by pressing a/b/c.
 **Drill Kick**: a/b/c (while executing Cat Attack).
 
 Ayla throws herself horizontally at the opponent while spinning.
-
 
 **Tail Whirl**: D, DB, B + a/b/c (Air).
 
@@ -67,8 +73,8 @@ Supers
 **Tail Spin**: D, DB, B, D, DB, B + a/b/c (Standing). Requires 1000 Power.
 
 Ayla spins and creates two twisters that damage the opponent.
-You can press F or B ackwards during the spinning to slowly
-move and rack up more damage. Don't let your opponents escape!
+You can slowly move horizontally to try and do more damage. 
+Don't let your opponents escape!
 	
 **Triple Kick**: D, DF, F, D, DF, F, a/b/c (Standing). Requires 1000 Power.
 
@@ -90,18 +96,19 @@ Special Mode
 Ayla fills with rage: you can see she's lost control! You'll automatically walk
 towards your opponent.  As long as you're in this mode, almost all your moves will 
 chain. Your attacks will be quicker and you can cancel them into each other. 
-Your Power will automatically decrease: when you run out of Power, the mode ends.
+Your Power will automatically decrease: when you run out of Power, this mode ends.
 Go for a big flashy combo!
 
 Final Move
 ----------
 
-**Instant Dino Murder / Shun Kyoryuu Satsu**: D, B, D, F + a/b/c (Standing, must have Berserker activated). Uses all of your Power.
+**Instant Dino Murder / Shun Kyoryuu Satsu**: D, B, D, F + a/b/c (Standing, must have Berserker activated). Uses all of your Power, ending Berserker mode.
 
-Ayla advances toward the opponent. If it grabs him/her, everything will 
-go dark as he/she gets punished. The reference in this one is pretty obvious. 
+A super throw. Ayla advances toward the opponent. If it grabs him/her, everything 
+goes dark as he/she gets punished. The reference in this one is pretty obvious. 
 Try ending a round with this move for a special win pose!
 
+"Messatsu!"
 
 ----------------------------
 Credits and Acknowledgements
@@ -118,14 +125,11 @@ Credits and Acknowledgements
 - The guys at the Mugen Fighters Guild forum (http://mugenguild.com/forumx/index.php),
   for answering my questions and helping me learn. Their Code Library/Snippet Section rocks.
 
-- POTS, as I read his characters' code whenever I had doubts. I used some of his code as a
-  base for some moves/state controllers.
+- PoTS (http://mugenguild.com/pots/), as I read his characters' code whenever I had doubts. 
+I used some of his code as a base for some moves/state controllers.
 
 - Square (now Square-Enix) and the team that created Chrono Trigger, for making this
 wonderful game.
-
-- warusaki3, as I used some sounds extracted from one of its characters (though their use is
-currently disabled).
 
 - Elecbyte, of course, for creating the awesome fighting game engine that is MUGEN.
 
@@ -137,9 +141,8 @@ Disclaimer
 
 - Chrono Trigger and all of its characters are property of Square-Enix.
 
-- This creation/adaptation was made for entertainment and not for profit.
-
-- This creation/adaptation, nor any part of it, may not be used for commercial purposes. 
+- This creation/adaptation was made for entertainment and not for profit. Therefore, this 
+creation/adaptation (and any part of it) may not be used for commercial purposes. 
 
 - If you want to host this creation, modify or use it for your own purposes,
   try to ask me first.

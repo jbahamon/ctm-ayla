@@ -116,6 +116,7 @@ victory13 = "«Rawboot?» What that?\nAyla don't know."
 
 ; Variables 0-20 are temporary and should be reset before use.
 ; Var(20): Custom Combo timer
+
 ;----------------------------------------------------------------------
 
 ;---------------------------------------------------------------------------
@@ -211,6 +212,7 @@ value = 0
 
 [State -3: PalFX]
 type = PalFX
+triggerall = PalNo != 12
 trigger1 = (Var(21) > 0) && ((GameTime%3) = 0)
 time = 2
 add = 132,16,0

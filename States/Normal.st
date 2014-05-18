@@ -731,9 +731,9 @@ guardsound = 6,0
 animtype = Med
 ground.type = High
 ground.slidetime = 12
-ground.hittime  = 14
-ground.velocity = -5
-air.velocity = -5,-4
+ground.hittime  = 12
+ground.velocity = -1
+air.velocity = -1,-4
 getpower = IfElse(Var(21) > 0, 0, ifelse(p2movetype = H, 72, 144)), IfElse(Var(21) > 0, 0, 36)
 givepower = 36, 36
 palfx.add = 200, 200, 200

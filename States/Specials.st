@@ -285,7 +285,7 @@ ignorehitpause = 1
 [State 1021, PosSet]
 type = VelSet
 trigger1 = !Time
-x = 1.1
+x = IfElse(Var(0) = 2, 2.2, IfElse(Var(0) = 1, 1.7, 1.1))
 y = -6
 
 [State 1021, PosSet]
@@ -811,6 +811,7 @@ juggle  = 3
 poweradd= IfElse(Var(21) > 0, 0, 72)
 ctrl = 0
 anim = 1040
+velset = 0, 0
 sprpriority = 1
 facep2 = 1
 
@@ -846,6 +847,8 @@ channel = 0
 [State 1040, Vel]
 type = StopSnd
 trigger1 = AnimElemNo(0) > 9
+trigger2 = Pos Y > -Vel Y
+trigger2 = Vel Y > 0
 channel = 0
 ;loop = 1
 
@@ -946,5 +949,6 @@ Y = 0.4
 [State 1040, End]
 type = ChangeState
 trigger1 = Pos Y > -Vel Y
+trigger1 = Vel Y > 0
 value = 1035
 

@@ -541,6 +541,7 @@ trigger1 = ctrl || ((stateno = [200, 299]) && time <= 10)
 [State -1, Gatling Kick]
 type = ChangeState
 value = 2020
+triggerall = PalNo != 12
 triggerall = Command = "qcbhcfa" || Command = "qcbhcfb" || Command = "qcbhcfc"
 triggerall = Power >= 1000
 trigger1 = statetype = S
@@ -551,6 +552,7 @@ trigger3 = ( StateNo = [400,499] ) && MoveHit
 [State -1, Triple Kick]
 type = ChangeState
 value = 2010
+triggerall = PalNo != 12
 triggerall = Command = "2qcfa" || Command = "2qcfb" || Command = "2qcfc" 
 triggerall = Power >= 1000
 trigger1 = statetype = S
@@ -561,6 +563,7 @@ trigger3 = ( StateNo = [400,499] ) && MoveHit
 [State -1, Tail Spin]
 type = ChangeState
 value = 2000
+triggerall = PalNo != 12
 triggerall = Command = "2qcba" || Command = "2qcbb" || Command = "2qcbc" 
 triggerall = Power >= 1000
 trigger1 = statetype = S
@@ -575,6 +578,7 @@ trigger3 = ( StateNo = [400,499] ) && MoveHit
 [State -1, Backflip Kick]
 type = ChangeState
 value = 1010
+triggerall = PalNo != 12
 triggerall = command = "dfa" || command = "dfb" || command = "dfc"
 triggerall = roundstate = 2 && statetype != A 
 trigger1 = ctrl
@@ -584,6 +588,7 @@ trigger3 = (stateno = [400, 499]) && movecontact
 [State -1, Rock Throw]
 type = ChangeState
 value = 1020
+triggerall = PalNo != 12
 triggerall = command = "qcfa" || command = "qcfb" || command = "qcfc"
 triggerall = roundstate = 2 && statetype != A && !numhelper(1020)
 trigger1 = ctrl
@@ -592,6 +597,7 @@ trigger2 = (stateno = [200, 299]) && movecontact
 [State -1, Cat Attack into Drill Kick]
 type = ChangeState
 value = 1034
+triggerall = PalNo != 12
 triggerall = StateNo = 1030 && !MoveContact
 triggerall = Pos Y < 0
 trigger1 = Command = "a" || Command = "b" || Command = "c"
@@ -600,7 +606,8 @@ trigger2 = Vel Y > 0 && Var(21)
 [State -1, Cat Attack]
 type = ChangeState
 value = 1030
-triggerall = Power >= 200
+triggerall = PalNo != 12
+triggerall = Power >= 500
 triggerall = Command = "qcba" || Command = "qcbb" || Command = "qcbc" 
 trigger1 = statetype != A
 trigger1 = ctrl
@@ -608,18 +615,44 @@ trigger1 = ctrl
 [State -1, Tail Whirl]
 type = ChangeState
 value = 1040
+triggerall = PalNo != 12
 triggerall = Command = "qcba" || Command = "qcbb" || Command = "qcbc" 
 trigger1 = statetype = A
 trigger1 = ctrl
 trigger2 = ( StateNo = [600,610] ) && movecontact
 trigger3 = ( StateNo = 1010 ) && movecontact && AnimElemNo(0) < 9
 
+
+
+
+
+;---------------------------------------------------------------------------
+[State -1, Gou Shoryuuken]
+type = ChangeState
+value = 11010
+triggerall = PalNo = 12
+triggerall = command = "dfa" || command = "dfb" || command = "dfc"
+triggerall = roundstate = 2 && statetype != A 
+trigger1 = ctrl
+trigger2 = (stateno = [200, 299]) && movecontact
+trigger3 = (stateno = [400, 499]) && movecontact
+
+;---------------------------------------------------------------------------
+[State -1, Gou Hadouken]
+type = ChangeState
+value = 11000
+triggerall = PalNo = 12
+triggerall = command = "qcfa" || command = "qcfb" || command = "qcfc"
+triggerall = roundstate = 2 && statetype != A && !numhelper(11005)
+trigger1 = ctrl
+trigger2 = (stateno = [200, 299]) && movecontact
 ;===========================================================================
 ; Throws, Rolls, Etc
 ;===========================================================================
 
 [State -1, Boulder Toss]
 type = ChangeState
+triggerall = PalNo != 12
 trigger1 = (command = "recovery" || command = "2p") && (command = "holdfwd" || command = "holdback")
 trigger1 = roundstate = 2 && ctrl && statetype = S && stateno != 100
 value = 800

@@ -370,6 +370,48 @@ name = "qcfc"
 command = ~D, DF, F, c
 time = 15
 
+
+[Command]
+name = "dfab"
+command = ~F, D, DF, ~a+b
+time = 20
+
+[Command]
+name = "dfab"
+command = ~F, D, DF, a+b
+time = 20
+
+[Command]
+name = "dfbc"
+command = ~F, D, DF, ~b+c
+time = 20
+
+[Command]
+name = "dfbc"
+command = ~F, D, DF, b+c
+time = 20
+
+
+[Command]
+name = "dbab"
+command = ~B, D, DB, ~a+b
+time = 20
+
+[Command]
+name = "dbab"
+command = ~B, D, DB, a+b
+time = 20
+
+[Command]
+name = "dbbc"
+command = ~B, D, DB, ~b+c
+time = 20
+
+[Command]
+name = "dbbc"
+command = ~B, D, DB, b+c
+time = 20
+
 ;-| Double Tap |-----------------------------------------------------------
 [Command]
 name = "FF"     ;Required (do not remove)
@@ -572,6 +614,19 @@ trigger2 = ( StateNo = [200,299] ) && MoveHit
 trigger3 = ( StateNo = [400,499] ) && MoveHit
 ;---------------------------------------------------------------------------
 
+
+;---------------------------------------------------------------------------
+[State -1, Messatsu Gou Hadou]
+type = ChangeState
+value = 13000
+triggerall = PalNo = 12
+triggerall = Command = "2qcfa" || Command = "2qcfb" || Command = "2qcfc" 
+triggerall = Power >= 1000
+trigger1 = statetype = S
+trigger1 = ctrl
+trigger2 = ( StateNo = [200,299] ) && MoveHit
+trigger3 = ( StateNo = [400,499] ) && MoveHit
+
 ;===========================================================================
 ; Special Moves
 ;===========================================================================
@@ -625,6 +680,14 @@ trigger3 = ( StateNo = 1010 ) && movecontact && AnimElemNo(0) < 9
 
 
 
+;---------------------------------------------------------------------------
+[State -1, Gou Shoryuuken]
+type = ChangeState
+value = 11400
+triggerall = PalNo = 12
+triggerall = command = "dfab" || command = "dfbc" || command = "dbab" || command = "dbbc"
+triggerall = roundstate = 2 && statetype != A 
+trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
 [State -1, Gou Shoryuuken]
@@ -634,8 +697,18 @@ triggerall = PalNo = 12
 triggerall = command = "dfa" || command = "dfb" || command = "dfc"
 triggerall = roundstate = 2 && statetype != A 
 trigger1 = ctrl
-trigger2 = (stateno = [200, 299]) && movecontact
+trigger2 = (stateno = [200, 299]) && movecontact = [1, 8]
 trigger3 = (stateno = [400, 499]) && movecontact
+trigger4 = ((stateno = [200, 299]) && time <= 2) || (stateno = 200)
+trigger5 = var(21) && (stateno = [200, 289])
+;---------------------------------------------------------------------------
+[State -1, Gou Hadouken]
+type = ChangeState
+value = 11050
+triggerall = PalNo = 12
+triggerall = command = "qcfa" || command = "qcfb" || command = "qcfc"
+triggerall = roundstate = 2 && statetype = A && !numhelper(11055)
+trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
 [State -1, Gou Hadouken]
@@ -646,6 +719,26 @@ triggerall = command = "qcfa" || command = "qcfb" || command = "qcfc"
 triggerall = roundstate = 2 && statetype != A && !numhelper(11005)
 trigger1 = ctrl
 trigger2 = (stateno = [200, 299]) && movecontact
+
+;---------------------------------------------------------------------------
+[State -1, Tatsumaki Zankuu Kyaku]
+type = ChangeState
+value = 11200
+triggerall = PalNo = 12
+triggerall = Command = "qcba" || Command = "qcbb" || Command = "qcbc" 
+trigger1 = statetype != A
+trigger1 = ctrl
+trigger2 = ( StateNo = [200,499] ) && movecontact
+
+;---------------------------------------------------------------------------
+[State -1, Kuchuu Tatsumaki Zankuu Kyaku]
+type = ChangeState
+value = 11250
+triggerall = PalNo = 12
+triggerall = Command = "qcba" || Command = "qcbb" || Command = "qcbc" 
+trigger1 = statetype = A
+trigger1 = ctrl
+trigger2 = ( StateNo = [600,699] ) && movecontact
 ;===========================================================================
 ; Throws, Rolls, Etc
 ;===========================================================================

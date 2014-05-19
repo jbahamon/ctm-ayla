@@ -173,6 +173,45 @@ ignorehitpause=1
 
 [Statedef -3]
 
+
+[State -3, Corner Push]
+type = varset
+trigger1 = PalNo = 12
+trigger1 = fvar(5)
+trigger1 = numtarget
+trigger1 = target, hitover || (target, gethitvar(hitshaketime) > 0 && target, time <= 0)
+fvar(5) = 0
+[State -3, Corner Push]
+type = varset
+trigger1 = PalNo = 12
+trigger1 = movecontact = 1 && numtarget
+fvar(5) = target, gethitvar(xvel)
+ignorehitpause = 1
+[State -3, Corner Push]
+type = posadd
+trigger1 = PalNo = 12
+triggerall = fvar(5)
+triggerall = (statetype = S || statetype = C) && numtarget
+triggerall = !hitpausetime && target, gethitvar(hitshaketime) <= 0
+triggerall = (target, statetype = S || target, statetype = C) && !(target, gethitvar(yvel)) && !(target, hitfall)
+trigger1 = target, frontedgebodydist <= abs(target, vel x)
+trigger1 = (target, gethitvar(xvel) * target, facing) > 0
+trigger2 = target, backedgebodydist <= abs(target, vel x)
+trigger2 = (target, gethitvar(xvel) * target, facing) < 0
+x = ifelse(target, frontedgebodydist <= 0, -1, 1) * (target, facing) * fvar(5)
+[State -3, Corner Push]
+type = varset
+trigger1 = PalNo = 12
+trigger1 = fvar(5)
+trigger1 = abs(fvar(5)) < 1.0
+fvar(5) = 0
+[State -3, Corner Push]
+type = varset
+trigger1 = PalNo = 12
+trigger1 = numtarget
+trigger1 = target, gethitvar(hitshaketime) <= 0
+fvar(5) = fvar(5) * 0.85
+
 [State -3, Prevent Undergound Juggles]
 type= targetbind
 triggerall= StateNo != [2010, 2014]

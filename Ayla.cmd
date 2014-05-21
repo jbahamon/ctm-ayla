@@ -572,13 +572,18 @@ trigger1 = ctrl
 ;===========================================================================
 ; Super Moves
 ;===========================================================================
-[State -1, SGS]
+[State -1, SKS]
 type = ChangeState
 value = 2100
 triggerall = Command = "qcfhcba" || Command = "qcfhcbb" || Command = "qcfhcbc"
 triggerall = Var(21) > 0
-trigger1 = statetype != A
-trigger1 = ctrl || ((stateno = [200, 299]) && time <= 10)
+trigger1 = statetype != A && roundstate = 2
+trigger1 = ctrl || ((stateno = [200, 299]) && time <= 2)
+trigger2 = (stateno = [200, 499])
+trigger3 = PalNo = 12 && (stateno = 11100 || stateno = 11305 || stateno = 11505) && (movecontact = [1, 32])
+trigger4 = PalNo = 12 && (stateno = [11000, 14999]) && numhelper(stateno + 5) && var(10) < 5
+trigger4 = helper(stateno + 5), var(3)
+trigger5 = PalNo = 12 && (stateno = 52 && (prevstateno = [1000, 4999]) && (movecontact = [1, 32]))
 
 [State -1, Gatling Kick]
 type = ChangeState
@@ -586,7 +591,7 @@ value = 2020
 triggerall = PalNo != 12
 triggerall = Command = "qcbhcfa" || Command = "qcbhcfb" || Command = "qcbhcfc"
 triggerall = Power >= 1000
-trigger1 = statetype = S
+trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = ( StateNo = [200,299] ) && MoveHit
 trigger3 = ( StateNo = [400,499] ) && MoveHit
@@ -597,7 +602,7 @@ value = 2010
 triggerall = PalNo != 12
 triggerall = Command = "2qcfa" || Command = "2qcfb" || Command = "2qcfc" 
 triggerall = Power >= 1000
-trigger1 = statetype = S
+trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = ( StateNo = [200,299] ) && MoveHit
 trigger3 = ( StateNo = [400,499] ) && MoveHit
@@ -608,13 +613,77 @@ value = 2000
 triggerall = PalNo != 12
 triggerall = Command = "2qcba" || Command = "2qcbb" || Command = "2qcbc" 
 triggerall = Power >= 1000
-trigger1 = statetype = S
+trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = ( StateNo = [200,299] ) && MoveHit
 trigger3 = ( StateNo = [400,499] ) && MoveHit
 ;---------------------------------------------------------------------------
 
+[State -1, Messatsu Gou Shoryuu]
+type = changestate
+value = 13100
+triggerall = Command = "qcbhcfa" || Command = "qcbhcfb" || Command = "qcbhcfc"
+triggerall = roundstate = 2 && statetype != A && power >= 1000
+trigger1 = ctrl || ((stateno = [200, 299]) && time <= 2)
+trigger2 = (stateno = [200, 255]) && stateno != 207 && (movecontact = [1, 8])
+trigger3 = (stateno = 11100) && (movecontact = [1, 32])
+trigger4 = (stateno = [11000, 14999]) && numhelper(stateno + 5)
+trigger4 = helper(stateno + 5), var(3)
+trigger5 = var(21) && (stateno = [200, 289])
+trigger6 = var(21) && ((stateno = [11000, 12999]) || stateno = 52 && (prevstateno = [11000, 12999])) && movecontact
+trigger7 = var(21) && (stateno = [11000, 12999]) && numhelper(stateno + 5)
+trigger7 = helper(stateno + 5), var(3)
+trigger8 = stateno = 52 && (prevstateno = [11000, 14999]) && (movecontact = [1, 32])
 
+[State -1, Messatsu Gou Senpuu]
+type = changestate
+value = 13250
+triggerall = PalNo = 12
+triggerall = command = "2qcba" || command = "2qcbb" || command = "2qcbc"
+triggerall = roundstate = 2 && statetype = A && power >= 1000
+trigger1 = ctrl || ((stateno = [200, 299]) && time <= 2)
+trigger2 = (stateno = [210, 220]) && (movecontact = [1, 32])
+trigger3 = ((stateno = [11000, 11250]) || stateno = 13100) && (movecontact = [1, 32])
+trigger4 = (stateno = [11000, 14999]) && numhelper(stateno + 5)
+trigger4 = helper(stateno + 5), var(3)
+trigger5 = var(21) && (stateno = [200, 289])
+trigger6 = var(21) && ((stateno = [11000, 12999]) || stateno = 52 && (prevstateno = [11000, 12999])) && movecontact
+trigger7 = var(21) && (stateno = [11000, 12999]) && numhelper(stateno + 5)
+trigger7 = helper(stateno + 5), var(3)
+;---------------------------------------------------------------------------
+[State -1, Messatsu Gou Rasen]
+type = changestate
+value = 13200
+triggerall = PalNo = 12
+triggerall = command = "2qcba" || command = "2qcbb" || command = "2qcbc"
+triggerall = roundstate = 2 && statetype != A && power >= 1000
+trigger1 = ctrl || ((stateno = [200, 299]) && time <= 2) 
+trigger2 = (stateno = [200, 255]) && (movecontact = [1, 8])
+trigger3 = (stateno = 11100 || stateno = 13100) && (movecontact)
+trigger4 = (stateno = [11000, 14999]) && numhelper(stateno + 5)
+trigger4 = helper(stateno + 5), var(3)
+trigger5 = var(21) && (stateno = [200, 289])
+trigger6 = var(21) && ((stateno = [11000, 12999]) || stateno = 52 && (prevstateno = [11000, 12999])) && movecontact
+trigger7 = var(21) && (stateno = [11000, 12999]) && numhelper(stateno + 5)
+trigger7 = helper(stateno + 5), var(3)
+trigger8 = stateno = 52 && (prevstateno = [11000, 14999]) && (movecontact = [1, 32])
+;---------------------------------------------------------------------------
+[State -1, Tenma Gou Zankuu]
+type = ChangeState
+value = 13050
+triggerall = PalNo = 12
+triggerall = Command = "2qcfa" || Command = "2qcfb" || Command = "2qcfc" 
+triggerall = Power >= 1000 && statetype = A
+triggerall = !numhelper(13005) && !numhelper(13055)
+trigger1 = ctrl
+trigger2 = (stateno = [200, 299]) && (movecontact = [1, 32])
+trigger3 = (stateno = 11100 || (stateno = [11200, 11250]) || stateno = 13100 || stateno = 13200 || stateno = 13250) && (movecontact = [1, 32])
+trigger4 = (stateno = [11000, 14999]) && numhelper(stateno + 5)
+trigger4 = helper(stateno + 5), var(3)
+trigger5 = var(21) && (stateno = [200, 289])
+trigger6 = var(21) && ((stateno = [11000, 12999]) || stateno = 52 && (prevstateno = [11000, 12999])) && movecontact
+trigger7 = var(21) && (stateno = [11000, 12999]) && numhelper(stateno + 5)
+trigger7 = helper(stateno + 5), var(3)
 ;---------------------------------------------------------------------------
 [State -1, Messatsu Gou Hadou]
 type = ChangeState
@@ -622,10 +691,18 @@ value = 13000
 triggerall = PalNo = 12
 triggerall = Command = "2qcfa" || Command = "2qcfb" || Command = "2qcfc" 
 triggerall = Power >= 1000
-trigger1 = statetype = S
-trigger1 = ctrl
-trigger2 = ( StateNo = [200,299] ) && MoveHit
-trigger3 = ( StateNo = [400,499] ) && MoveHit
+triggerall = !numhelper(13005) && !numhelper(13055)
+trigger1 = statetype != A
+trigger1 = ctrl || ((stateno = [200, 299]) && time <= 2)
+trigger2 = (stateno = [200, 255]) && (movecontact = [1, 8])
+trigger3 = (stateno = 11100 || stateno = 13100) && (movecontact = [1, 32])
+trigger4 = (stateno = [11000, 14999]) && numhelper(stateno + 5) && stateno != 13000
+trigger4 = helper(stateno + 5), var(3)
+trigger6 = var(21) && (stateno = [200, 289])
+trigger7 = var(21) && ((stateno = [11000, 12999]) || stateno = 52 && (prevstateno = [11000, 12999])) && movecontact
+trigger8 = var(21) && (stateno = [11000, 12999]) && numhelper(stateno + 5)
+trigger8 = helper(stateno + 5), var(3)
+trigger9 = stateno = 52 && (prevstateno = [11000, 14999]) && (movecontact = [1, 32])
 
 ;===========================================================================
 ; Special Moves
@@ -692,7 +769,7 @@ trigger1 = ctrl
 ;---------------------------------------------------------------------------
 [State -1, Gou Shoryuuken]
 type = ChangeState
-value = 11010
+value = 11100
 triggerall = PalNo = 12
 triggerall = command = "dfa" || command = "dfb" || command = "dfc"
 triggerall = roundstate = 2 && statetype != A 

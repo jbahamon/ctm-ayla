@@ -105,6 +105,14 @@ channel = 1
 persistent = 0
 ignorehitpause = 1
 
+[State 1001, Dampen]
+Type = ParentVarset
+Trigger1 = MoveHit
+trigger1 = !(target, time) && target, movetype = H
+fvar(39) = parent, Fvar(39)*0.85
+persistent = 0
+ignorehitpause = 1
+
 [State 1005, Hit]
 type = hitdef
 trigger1 = 1
@@ -139,13 +147,6 @@ palfx.time = 8
 airguard.ctrltime = 16
 airguard.velocity = ifelse((root, var(21)), -4, -8) * 0.6, -1.5 * 0.6
 forcestand = 1
-
-[State 200, Dampen]
-Type=ParentVarset
-Trigger1 = MoveHit
-fvar(39) = (Parent, FVar(39))*0.85
-persistent = 0
-ignorehitpause = 1
 
 [State 1005, End]
 type = changestate
@@ -227,12 +228,14 @@ ctrl = 0
 velset = 0, 0
 sprpriority = 4
 
-[State 200, Dampen]
-Type=ParentVarset
+[State 1001, Dampen]
+Type = ParentVarset
 Trigger1 = MoveHit
-fvar(39) = (Parent, FVar(39))*0.85
+trigger1 = !(target, time) && target, movetype = H
+fvar(39) = parent, Fvar(39)*0.85
 persistent = 0
 ignorehitpause = 1
+
 
 [State 1005, Trans]
 type = Trans
@@ -373,11 +376,11 @@ trigger1 = !animtime
 
 ;---------------------------------------------------------------------------
 ; Gou Shoryuuken
-[Statedef 11010]
+[Statedef 11100]
 type = S
 physics = S
 movetype = A
-anim = 11010
+anim = 11100
 ctrl = 0
 velset = 0, 0
 poweradd = 72 * !var(21)
@@ -400,14 +403,14 @@ var(0) = IfElse(Command = "dfc", 2, IfElse(Command = "dfb", 1, 0))
 
 [State 1100, nothitby]
 type = NotHitBy
-trigger1 = Anim = 11010 && AnimElemTime(4) < 0
+trigger1 = Anim = 11100 && AnimElemTime(4) < 0
 value = SCA
 time = 1
 ignorehitpause = 1
 
 [State 1100, Vel]
 type = velset
-trigger1 = anim = 11010 && AnimElem = 4
+trigger1 = anim = 11100 && AnimElem = 4
 x = IfElse(Var(0) = 2, 12, IfElse(Var(0) = 1, 9, 6))*0.8
 y = IfElse(Var(0) = 2, -11, IfElse(Var(0) = 1, -8.5, -6))*0.8
 
@@ -423,7 +426,7 @@ x = 0
 
 [State 1100, Snd]
 type = playsnd
-trigger1 = anim = 11010 && animelem = 3
+trigger1 = anim = 11100 && animelem = 3
 value = 3, 9
 channel = 0
 ignorehitpause = 1
@@ -431,8 +434,8 @@ persistent = 0
 
 [State 1100, Hit]
 type = hitdef
-trigger1 = animelem = 2 && anim = 11010
-trigger2 = animelem = 3 && anim = 11010
+trigger1 = animelem = 2 && anim = 11100
+trigger2 = animelem = 3 && anim = 11100
 attr = S, SA
 damage = ifelse((animelem = 3), 27, 67 + 7 * var(0)), 7
 animtype = Hard
@@ -473,7 +476,7 @@ airguard.velocity = -8, -1.5
 
 [State 1100, hit2]
 type = hitdef
-trigger1 = animelem = 4 && anim = 11010
+trigger1 = animelem = 4 && anim = 11100
 attr = A, SA
 damage = 20, 7
 animtype = Back
@@ -510,14 +513,14 @@ airguard.cornerpush.veloff = 0
 
 [State 1100, statetype]
 type = statetypeset
-trigger1 = anim = 11010 && animelemtime(4) >= 0
+trigger1 = anim = 11100 && animelemtime(4) >= 0
 statetype = A
 physics = A
 
 [State 1100, Anim]
 type = changeanim
-trigger1 = anim = 11010 && animelemtime(4) > 0 && vel y > (ifelse(var(10) = 3, -5.3, ifelse(var(10) = 2, -4, -2.7))) * 0.8
-value = 11011
+trigger1 = anim = 11100 && animelemtime(4) > 0 && vel y > (ifelse(var(10) = 3, -5.3, ifelse(var(10) = 2, -4, -2.7))) * 0.8
+value = 11101
 
 [State Idle]
 type = statetypeset

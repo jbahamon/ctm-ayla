@@ -14,6 +14,20 @@ sprpriority = 1
 facep2 = 1
 poweradd = -1000
 
+[State 2010, PalFx]
+type = PalFX
+trigger1 = Anim = 13000
+trigger1 = (Time % 8 = 0)
+time = 2
+add = 200, 200, 200
+mul = 256, 256, 256
+
+[State 2010, Offset]
+type = OffSet
+trigger1 = Anim = 13000
+X = (random % 8) - 4
+Y = (random % 8) - 4
+
 [State 3000, Strength]
 type = varset
 trigger1 = var(0) != 5
@@ -236,6 +250,7 @@ anim = 7008
 ctrl = 0
 velset = 0, 0
 sprpriority = 4
+
 [State 3006, Trans]
 type = trans
 trigger1 = 1
@@ -243,8 +258,6 @@ trans = addalpha
 alpha = 256, 256
 ignorehitpause = 1
 
-ignorehitpause = 1
-persistent = 0
 [State 3006, End]
 type = destroyself
 trigger1 = !animtime
@@ -261,6 +274,22 @@ ctrl = 0
 velset = 0, 0
 sprpriority = 1
 poweradd = -1000
+
+[State 2010, PalFx]
+type = PalFX
+trigger1 = Anim = 13050
+trigger1 = AnimElemNo(0) < 8
+trigger1 = (Time % 8 = 0)
+time = 2
+add = 200, 200, 200
+mul = 256, 256, 256
+
+[State 2010, Offset]
+type = OffSet
+trigger1 = Anim = 13050
+trigger1 = AnimElemNo(0) < 8
+X = (random % 8) - 4
+Y = (random % 8) - 4
 
 [State 3050, Strength]
 type = varset
@@ -526,6 +555,22 @@ sprpriority = 1
 facep2 = 1
 poweradd = -1000
 
+[State 2010, PalFx]
+type = PalFX
+trigger1 = Anim = 13100
+trigger1 = AnimElemNo(0) = 1
+trigger1 = (Time % 8 = 0)
+time = 2
+add = 200, 200, 200
+mul = 256, 256, 256
+
+[State 2010, Offset]
+type = OffSet
+trigger1 = Anim = 13100
+trigger1 = AnimElemNo(0) = 1
+X = (random % 8) - 4
+Y = (random % 8) - 4
+
 [State 1001, Dampen]
 Type = Varset
 Trigger1 = MoveHit
@@ -562,6 +607,7 @@ supermovetime = 9999
 type = superpause
 trigger1 = anim = 13100 && animelemtime(1) = 2
 time = 45
+movetime = 45
 anim = -1
 p2defmul = 1
 darken = 0
@@ -613,7 +659,7 @@ edge = 6,6
 type = hitdef
 trigger1 = animelem = 14 && anim = 13100
 attr = S, HA
-damage = 31, 7
+damage = 33, 7
 animtype = Medium
 fall.animtype = Medium
 guardflag = M
@@ -646,7 +692,7 @@ palfx.time = 8
 type = hitdef
 trigger1 = (animelem = 3 || animelem = 15) && anim = 13100
 attr = S, HA
-damage = 31, 7
+damage = 33, 7
 animtype = Hard
 fall.animtype = Hard
 guardflag = M
@@ -679,7 +725,7 @@ palfx.time = 8
 type = hitdef
 trigger1 = animelem = 26 && anim = 13100
 attr = S, HA
-damage = 31, 7
+damage = 33, 7
 animtype = Medium
 fall.animtype = Medium
 guardflag = M
@@ -715,7 +761,7 @@ palfx.time = 8
 type = hitdef
 trigger1 = animelem = 27 && anim = 13100
 attr = S, HA
-damage = 31, 7
+damage = 33, 7
 animtype = Hard
 fall.animtype = Hard
 guardflag = M
@@ -751,7 +797,7 @@ palfx.time = 8
 type = hitdef
 trigger1 = (animelem = 4 || animelem = 16) && anim = 13100
 attr = S, HA
-damage = 31, 7
+damage = 33, 7
 animtype = Hard
 guardflag = M
 hitflag = MAF
@@ -784,7 +830,7 @@ type = hitdef
 trigger1 = animelem = 28 && anim = 13100
 persistent = 0
 attr = A, HA
-damage = 31, 7
+damage = 33, 7
 animtype = Back
 guardflag = M
 hitflag = MAF
@@ -843,6 +889,20 @@ juggle = ifelse((prevstateno = [11000, 14999]), 0, 6) * !var(21)
 sprpriority = 1
 facep2 = 1
 poweradd = -1000
+
+[State 2010, PalFx]
+type = PalFX
+trigger1 = Time < 45
+trigger1 = (Time % 8 = 0)
+time = 2
+add = 200, 200, 200
+mul = 256, 256, 256
+
+[State 2010, Offset]
+type = OffSet
+trigger1 = Time < 45
+X = (random % 8) - 4
+Y = (random % 8) - 4
 
 [State 1001, Dampen]
 Type = Varset
@@ -1145,10 +1205,26 @@ supermovetime = 9999
 type = superpause
 trigger1 = anim = 13250 && animelem = 3
 time = 45
+movetime = 45
 anim = -1
 sound = s7, 0
 p2defmul = 1
 darken = 0
+
+[State 2010, PalFx]
+type = PalFX
+trigger1 = Time < 45
+trigger1 = (Time % 8 = 0)
+time = 2
+add = 200, 200, 200
+mul = 256, 256, 256
+
+[State 2010, Offset]
+type = OffSet
+trigger1 = Time < 45
+X = (random % 8) - 4
+Y = (random % 8) - 4
+
 
 [State Corner Push]
 type = varset
@@ -1178,7 +1254,7 @@ y = ifelse(animelemtime(9) < 0, 0.33, 0.1)*0.8
 type = velset
 trigger1 = anim = 13251 && animelem = 15
 x = 0
-y = -4*0.8
+y = -4
 
 [State 3250, Vel]
 type = veladd

@@ -822,7 +822,6 @@ trigger2 = ( StateNo = [600,699] ) && movecontact
 
 [State -1, Boulder Toss]
 type = ChangeState
-triggerall = PalNo != 12
 trigger1 = (command = "recovery" || command = "2p") && (command = "holdfwd" || command = "holdback")
 trigger1 = roundstate = 2 && ctrl && statetype = S && stateno != 100
 value = 800

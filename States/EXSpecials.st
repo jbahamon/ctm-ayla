@@ -14,6 +14,16 @@ poweradd = 72 * !var(21)
 sprpriority = 1
 facep2 = 1
 
+[State 1020, Rock Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S8000,0
+
+[State 1020, Rock Sound]
+type = PlaySnd
+trigger1 = AnimElem = 4
+value = S7000,1
+
 [State 1000, Strength]
 type = varset
 trigger1 = !time 
@@ -100,7 +110,7 @@ y = 0
 type = playsnd
 trigger1 = movehit && numtarget
 trigger1 = !(target, time) && target, movetype = H
-value = 2, 7
+value = S7020,5
 channel = 1
 persistent = 0
 ignorehitpause = 1
@@ -195,6 +205,21 @@ anim = 11050
 ctrl = 0
 poweradd = 72 * !var(21)
 sprpriority = 1
+
+
+[State 1020, Rock Sound]
+type = PlaySnd
+trigger1 = !Time || animelem = 4
+value = S8000,0
+channel = 0
+
+
+[State 1020, Rock Sound]
+type = PlaySnd
+trigger1 = animelem = 2 || animelem = 5
+value = S7000,1
+channel = 1
+
 
 [State 1250, slow]
 type = veladd
@@ -305,6 +330,7 @@ guardflag = MA
 pausetime = 0, 8
 sparkno = -1
 sparkxy = -10, 0
+hitsound = S7020,5
 guardsound = s2, 0
 ground.type = High
 ground.slidetime = 16
@@ -388,6 +414,18 @@ juggle = ifelse((p2movetype = H && p2statetype = A), 7, 9)
 facep2 = 1
 sprpriority = 1
 
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S7000,1
+channel = 1
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S8000,1
+channel = 0
+
 [State 200, Dampen]
 Type=Varset
 Trigger1 = MoveHit
@@ -446,7 +484,7 @@ priority = 4, Hit
 pausetime = ifelse(var(21), 6, 12), ifelse(var(21), 5, 11)
 sparkno = s7001
 sparkxy = -7 + Random % 2 , ifelse((animelem = 2), -5, -10)
-hitsound = s2, 3
+hitsound = S7020,0
 guardsound = s2, 0
 ground.type = Low
 ground.slidetime = 16
@@ -486,6 +524,7 @@ priority = 4, Hit
 pausetime = ifelse(var(21), 8, 16), ifelse(var(21), 8, 16)
 sparkno = s7001
 sparkxy = -7 + Random % 2, -20
+hitsound = S7020,5
 ground.type = High
 ground.slidetime = 16
 ground.hittime = 16
@@ -541,6 +580,20 @@ poweradd = 72 * !var(21)
 juggle = 8
 facep2 = 1
 sprpriority = 1
+
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S7000,1
+channel = 1
+
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S8000,2
+channel = 0
 
 [State 200, Dampen]
 Type=Varset
@@ -609,6 +662,7 @@ priority = 4, Hit
 pausetime = ifelse(var(21), 7, 14), ifelse(var(21), 7, 14)
 sparkno = s7001
 sparkxy = -10, -7
+hitsound = S7020,0
 ground.type = High
 ground.slidetime = 16
 ground.hittime = 16
@@ -643,6 +697,7 @@ guardflag = M
 hitflag = MAF
 priority = 4, Hit
 pausetime = ifelse(var(21), 7, 14), ifelse(var(21), 7, 14)
+hitsound = S7020,0
 sparkno = s7001
 sparkxy = -10, -7
 ground.type = High
@@ -687,6 +742,19 @@ poweradd = 72 * !var(21)
 juggle = 8
 sprpriority = 1
 
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S7000,1
+channel = 1
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S8000,2
+channel = 0
+
 [State 200, Dampen]
 Type=Varset
 Trigger1 = MoveHit
@@ -716,7 +784,7 @@ priority = 4, Hit
 pausetime = ifelse(var(21), 7, 14), ifelse(var(21), 7, 14)
 sparkno = s7001
 sparkxy = -10, -6
-hitsound = s2, 6
+hitsound = S7020,0
 guardsound = s2, 0
 ground.type = High
 ground.slidetime = 16
@@ -752,7 +820,7 @@ priority = 4, Hit
 pausetime = ifelse(var(21), 7, 14), ifelse(var(21), 7, 14)
 sparkno = s7001
 sparkxy = -10, -6
-hitsound = s2, 6
+hitsound = s7020,0
 guardsound = s2, 0
 ground.type = High
 ground.slidetime = 16

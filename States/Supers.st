@@ -1455,6 +1455,27 @@ sprpriority = 2
 facep2 = 1
 velset = 0,0
 
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+trigger1 = PalNo = 12
+value = S8000,7
+channel = 0
+
+[State 8520, Portrait]
+type = Helper
+trigger1 = !Time
+trigger1 = PalNo = 12
+stateno = 7001
+name = "Super BG"
+ID = 7001
+sprpriority = -16
+postype = back
+ownpal = 1 
+supermovetime = 99999
+pausemovetime = 99999
+
 [State 2100, NHB]
 type = NotHitBy
 trigger1 = 1
@@ -1588,6 +1609,15 @@ type = TargetState
 trigger1 = !time
 value = 2105
 
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+trigger1 = PalNo = 12
+value = S8000,8
+channel = 0
+
+
 [State 2102, Bind]
 type = TargetBind
 trigger1 = animelemtime(2) >= 0 && animelemtime(17) < 0
@@ -1696,6 +1726,15 @@ type = TargetState
 trigger1 = AnimElemTime(16) >= 0 && numtarget
 value = 2106
 persistent = 0
+
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = PalNo = 12
+trigger1 = AnimElem = 16
+value = S8000,9
+channel = 0
+
 
 [State 2102, End]
 type = ChangeState

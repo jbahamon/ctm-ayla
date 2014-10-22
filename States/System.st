@@ -614,6 +614,13 @@ type = ChangeAnim
 trigger1 = PrevStateNo = 2102 && !AnimTime
 value = 2104
 
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+trigger1 = PalNo = 12
+value = S8000,10
+channel = 0
+
 [State 362, Kanji]
 type = helper
 trigger1 = !time && PrevStateNo = 2102 && !numhelper(2103)

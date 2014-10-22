@@ -14,6 +14,30 @@ sprpriority = 1
 facep2 = 1
 poweradd = -1000
 
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S8000,3
+channel = 0
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S7000,1
+channel = 1
+
+[State 8520, Portrait]
+type = Helper
+trigger1 = !Time
+stateno = 7001
+name = "Super BG"
+ID = 7001
+sprpriority = -16
+postype = back
+ownpal = 1 
+supermovetime = 99999
+pausemovetime = 99999
+
 [State 2010, PalFx]
 type = PalFX
 trigger1 = Anim = 13000
@@ -78,6 +102,13 @@ type = changeanim
 trigger1 = anim = 13000 && time = 48
 value = 13001
 
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = anim = 13001 && animelem = 2
+value = S8000,5
+channel = 0
+
 [State 3000, hadouken]
 type = helper
 trigger1 = anim = 13001 && animelem = 2
@@ -88,16 +119,6 @@ name = "Hadouken"
 postype = p1
 pos = 8, -22
 ownpal = 1
-
-[State 3000, Snd]
-type = playsnd
-trigger1 = anim = 13001 && animelem = 2
-value = 3, 7
-channel = 0
-[State 3000, Snd]
-type = playsnd
-trigger1 = anim = 13001 && animelem = 2
-value = 5, 0
 
 [State 3000, End]
 type = changestate
@@ -189,6 +210,7 @@ guardflag = M
 pausetime = 4 * (var(2) < 8), 6
 sparkno = -1
 sparkxy = -10, 0
+hitsound = S7020,5
 guard.sparkno = s7001
 guardsound = s2, 0
 ground.type = High
@@ -275,6 +297,25 @@ velset = 0, 0
 sprpriority = 1
 poweradd = -1000
 
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S8000,6
+channel = 0
+
+[State 8520, Portrait]
+type = Helper
+trigger1 = !Time
+stateno = 7001
+name = "Super BG"
+ID = 7001
+sprpriority = -16
+postype = back
+ownpal = 1 
+supermovetime = 99999
+pausemovetime = 99999
+
 [State 2010, PalFx]
 type = PalFX
 trigger1 = Anim = 13050
@@ -348,13 +389,13 @@ ownpal = 1
 [State 3050, Snd]
 type = playsnd
 trigger1 = animelem = 8
-value = 4, 0
+value = S8000, 5
 channel = 0
 
 [State 3050, Snd]
 type = playsnd
 trigger1 = animelem = 8
-value = 5, 0
+value = 7000, 3
 
 [State 3050, Vel]
 type = velset
@@ -458,6 +499,7 @@ guardflag = M
 pausetime = 4 * (var(2) < 8), 6
 sparkno = S7001
 sparkxy = -15 + Random % 5, 4 - (Random % 5)
+hitsound = S7020,5
 guardsound = s2, 0
 ground.type = Low
 ground.slidetime = 16
@@ -554,6 +596,25 @@ juggle = ifelse((prevstateno = [11000, 14999]), 0, 6) * !var(21)
 sprpriority = 1
 facep2 = 1
 poweradd = -1000
+
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S8000,3
+channel = 0
+
+[State 8520, Portrait]
+type = Helper
+trigger1 = !Time
+stateno = 7001
+name = "Super BG"
+ID = 7001
+sprpriority = -16
+postype = back
+ownpal = 1 
+supermovetime = 99999
+pausemovetime = 99999
 
 [State 2010, PalFx]
 type = PalFX
@@ -655,6 +716,28 @@ type = width
 trigger1 = vel y < 0
 edge = 6,6
 
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = AnimElem = 13
+trigger2 = AnimElem = 3
+value = S7000,1
+channel = 1
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = AnimElem = 13
+trigger2 = AnimElem = 3
+value = S8000,1
+channel = 0
+
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = AnimElem = 20
+value = S8000,2
+channel = 0
+
 [State 3100, hitlow]
 type = hitdef
 trigger1 = animelem = 14 && anim = 13100
@@ -668,6 +751,7 @@ priority = 4, Hit
 pausetime = ifelse((animelem = 24), 18, 6), ifelse((animelem = 24), 18, 6)
 sparkno = s7001
 sparkxy = -6, -15
+hitsound = S7020,0
 ground.type = Low
 ground.slidetime = 20
 ground.hittime = 20
@@ -699,6 +783,7 @@ guardflag = M
 hitflag = MAF
 priority = 4, Hit
 pausetime = 6, 6
+hitsound = S7020,0
 sparkno = s7001
 sparkxy = -6, -17
 ground.type = Low
@@ -732,6 +817,7 @@ guardflag = M
 hitflag = MAF
 priority = 4, Hit
 pausetime = 18, 18
+hitsound = S7020,0
 sparkno = s7001
 sparkxy = -6, -15
 ground.type = Low
@@ -767,6 +853,7 @@ fall.animtype = Hard
 guardflag = M
 hitflag = MAF
 priority = 4, Hit
+hitsound = S7020,0
 pausetime = 18, 18
 sparkno = s7001
 sparkxy = -6, -17
@@ -800,6 +887,7 @@ attr = S, HA
 damage = 33, 7
 animtype = Hard
 guardflag = M
+hitsound = S7020,0
 hitflag = MAF
 priority = 4, Hit
 pausetime = 6, 6
@@ -836,6 +924,7 @@ guardflag = M
 hitflag = MAF
 priority = 4, Hit
 pausetime = 2, 2
+hitsound = S7020,5
 sparkno = s7001
 sparkxy = -6, -20
 ground.type = High
@@ -875,8 +964,6 @@ type = statetypeset
 trigger1 = anim = 11101
 movetype = I
 
-
-
 ; Messatsu Gou Rasen
 [Statedef 13200]
 type = S
@@ -889,6 +976,24 @@ juggle = ifelse((prevstateno = [11000, 14999]), 0, 6) * !var(21)
 sprpriority = 1
 facep2 = 1
 poweradd = -1000
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S8000,3
+channel = 0
+
+[State 8520, Portrait]
+type = Helper
+trigger1 = !Time
+stateno = 7001
+name = "Super BG"
+ID = 7001
+sprpriority = -16
+postype = back
+ownpal = 1 
+supermovetime = 99999
+pausemovetime = 99999
 
 [State 2010, PalFx]
 type = PalFX
@@ -963,6 +1068,20 @@ trigger1 = anim = 13200 && animelem = 10
 x = 0
 y = -8*0.8
 
+[State N, Sound]
+type = PlaySnd
+trigger1 = anim = 13200 && animelem = 8
+value = S8000,1
+channel = 0
+
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = anim = 13201 && animelem = 8
+value = S7000,1
+channel = 1
+
+
 [State 3200, Vel]
 type = velset
 trigger1 = anim = 13201 && vel y > 0
@@ -1015,6 +1134,7 @@ animtype = Hard
 guardflag = M
 hitflag = MAF
 priority = 4, Hit
+hitsound = S7020,0
 pausetime = 16, 16
 sparkno = s7001
 sparkxy = -7, -6
@@ -1053,6 +1173,7 @@ animtype = Up
 guardflag = M
 hitflag = MAF
 priority = 4, Hit
+hitsound = S7020,0
 pausetime = 2, 2
 sparkno = s7001
 sparkxy = -6, -6
@@ -1093,6 +1214,7 @@ priority = 4, Hit
 pausetime = 2, 2
 sparkno = s7001
 sparkxy = -6, -6
+hitsound = S7020,0
 ground.type = High
 ground.slidetime = 16
 ground.hittime = 16
@@ -1126,6 +1248,7 @@ guardflag = M
 hitflag = MAF
 priority = 4, Hit
 pausetime = 24, 24
+hitsound = S7020,5
 sparkno = s7001
 sparkxy = -6, -7
 hitsound = s2, 6
@@ -1153,6 +1276,12 @@ airguard.ctrltime = 16
 airguard.velocity = ifelse(var(21), -4, -8)*0.8, -1.5*0.8
 forcestand = 1
 
+[State N, Sound]
+type = PlaySnd
+trigger1 = anim = 13201 && animelem = 45
+value = S8000,5
+channel = 0
+
 [State Idle]
 type = statetypeset
 trigger1 = anim = 13205
@@ -1169,6 +1298,45 @@ velset = 0, 0
 juggle = ifelse((prevstateno = [11000, 14999]), 0, 6) * !var(21)
 sprpriority = 1
 poweradd = -1000
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = anim = 13251 && animelem = 45
+value = S8000,5
+channel = 0
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = anim = 13251 && animelem = 3
+value = S8000,1
+channel = 0
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S8000,3
+channel = 0
+
+
+[State N, Sound]
+type = PlaySnd
+trigger1 = anim = 13251 && animelem = 3
+value = S7000,1
+channel = 0
+
+
+
+[State 8520, Portrait]
+type = Helper
+trigger1 = !Time
+stateno = 7001
+name = "Super BG"
+ID = 7001
+sprpriority = -16
+postype = back
+ownpal = 1 
+supermovetime = 99999
+pausemovetime = 99999
 
 [State 1001, Dampen]
 Type = Varset
@@ -1293,6 +1461,7 @@ damage = 24, 5
 animtype = Up
 guardflag = M
 hitflag = MAF
+hitsound = S7020,0
 priority = 4, Hit
 pausetime = 2, 2
 sparkno = s7001
@@ -1330,6 +1499,7 @@ guardflag = M
 hitflag = MAF
 priority = 4, Hit
 pausetime = 24, 24
+hitsound = S7020,5
 sparkno = s7001
 sparkxy = -6, -7
 hitsound = s2, 6

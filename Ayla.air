@@ -2850,6 +2850,10 @@ Clsn2: 2
   Clsn2[1] = 1, -21, 25, -4
 610,1, 1,-6, 1, H
 
+; Super BG
+[Begin Action 13999]
+13999,0, 0,0, -1, , A
+
 ; SVC Alternate Midnight Bliss
 [Begin Action 12000]
 12000,0, 0,0, -1

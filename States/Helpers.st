@@ -9,6 +9,11 @@ physics = N
 movetype = I
 anim = 7200
 
+[State 8520, Assert]
+type = assertspecial
+trigger1 = Time < 100
+flag = nobardisplay
+
 [State 7000, Var]
 type = VarSet
 trigger1 = !Time
@@ -67,4 +72,52 @@ color = floor(51.2 * (time - 40))
 type = DestroySelf
 trigger1 = Time >= 45
 
+;Pulsing Portrait
+[Statedef 7001]
+type = A
+movetype = I
+physics = N
+velset = 0,0
+anim = 13999
 
+[State 8520, Pos]
+type = Turn
+trigger1 = facing != 1
+
+[State 8520, Pos]
+type = PosAdd
+trigger1 = 1
+X = 160 - ScreenPos X
+Y = floor((1.3333333 * gameheight / gamewidth) * 120) - ScreenPos Y
+
+[State 8520, Scale]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+
+[State 8520, Trans]
+type = Trans
+trigger1 = Time < 8
+trans = addalpha
+alpha = Time * 32, 256
+
+[State 8520, Trans]
+type = Trans
+trigger1 = Time = [8, 29]
+trans = addalpha
+alpha = 256, 256
+
+[State 8520, Scale]
+type = AngleDraw
+trigger1 = 1
+scale = 0.5 + IfElse(Time > 29, (Time - 29)/32.0, 0), 0.5 + IfElse(Time > 29, (Time - 29)/32.0, 0)
+
+[State 8520, Scale]
+type = Trans
+trigger1 = Time >= 29
+trans = addalpha
+alpha = 256 - 16 * (Time - 29), 256
+
+[State 8520, Safety]
+type = DestroySelf
+trigger1 = Time >= 45

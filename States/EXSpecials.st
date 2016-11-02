@@ -245,7 +245,7 @@ ownpal = 1
 
 ;Zankuu Hadouken Helper
 [Statedef 11055]
-type = S
+type = A
 physics = N
 movetype = A
 anim = 11055

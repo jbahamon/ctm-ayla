@@ -577,7 +577,7 @@ type = ChangeState
 value = 2100
 triggerall = Command = "qcfhcba" || Command = "qcfhcbb" || Command = "qcfhcbc"
 triggerall = Var(21) > 0
-trigger1 = statetype != A && roundstate = 2
+triggerall = statetype != A && roundstate = 2
 trigger1 = ctrl || ((stateno = [200, 299]) && time <= 2)
 trigger2 = (stateno = [200, 499])
 trigger3 = PalNo = 12 && (stateno = 11100 || stateno = 11305 || stateno = 11505) && (movecontact = [1, 32])

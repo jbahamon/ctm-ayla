@@ -62,16 +62,6 @@ trigger1 = AnimElem = 3
 x = 2
 
 [State 1010, Jump]
-type = ChangeAnim
-trigger1 = AnimElemNo(0) = [2, 6]
-trigger1 = Pos Y < -20
-trigger1 = MoveContact
-trigger1 = Command = "a" || Command = "b" || Command = "c" 
-value = 1010
-elem = 7
-persistent = 0
-
-[State 1010, Jump]
 type = VelSet
 trigger1 = AnimElem = 7
 y = 0
@@ -79,7 +69,7 @@ x = 0
 
 [State 1010, Jump]
 type = VelSet
-trigger1 = AnimElem = 9
+trigger1 = AnimElemNo(0) = 9
 y = ifelse(var(0) = 2, 7.5, ifelse(var(0) = 1, 5.2, 4))
 x = ifelse(var(0) = 2, 4, ifelse(var(0) = 1, 5.2, 7.5))
 
@@ -106,13 +96,13 @@ sparkxy = -10,-30
 hitsound = S7020,5
 guardsound = 5,0
 ground.type = High
-ground.velocity = 0, ifelse(var(0) = 2, -7, ifelse(var(0) = 1, -7, -5));-4
-ground.hittime = 16
+ground.velocity = 0, ifelse(var(0) = 2, -9, ifelse(var(0) = 1, -7.3, -6.5))
+ground.hittime = 22
 ground.slidetime = 16
 guard.velocity = -10
-air.velocity = 0, ifelse(var(0) = 2, -7, ifelse(var(0) = 1, -7, -5));-4
+air.velocity = 0, ifelse(var(0) = 2, -9, ifelse(var(0) = 1, -7.3, -6.5))
 airguard.velocity = -1, -3
-air.hittime = 16
+air.hittime = 22
 ground.cornerpush.veloff = 0
 air.cornerpush.veloff = 0
 airguard.cornerpush.veloff = 0
@@ -234,10 +224,7 @@ pos = 0,0
 trans = addalpha
 alpha = floor((1 - AnimElemTime(3)/30.0)*256), floor(256*(AnimElemTime(3)/30.0))
 
-[State 1020, Rock Sound]
-type = PlaySnd
-trigger1 = AnimElem = 4
-value = S7000,1
+
 
 [State 1020, ChangeState]
 type = ChangeState
@@ -261,6 +248,11 @@ Trigger1 = MoveHit
 fvar(39) = parent, Fvar(39)*0.86
 persistent = 0
 ignorehitpause = 1
+
+[State 1020, Rock Sound]
+type = PlaySnd
+trigger1 = !Time
+value = S7000,1
 
 [State 1021, PosSet]
 type = VarSet
@@ -404,7 +396,6 @@ ctrl = 0
 anim = 1030
 sprpriority = 1
 facep2 = 1
-poweradd = -500
 velset = 0,0
 
 [State 1030, Jump]
@@ -439,11 +430,16 @@ trigger1 = Anim = 1033
 var(0) = 1
 
 [State 1030, Jump]
+type = VarSet
+trigger1 = !Time
+var(1) = IfElse(Command = "hcba", 0, IfElse(Command = "hcbb", 1, 2))
+
+[State 1030, Jump]
 type = VelSet
 trigger1 = Anim = 1030 && AnimElem = 5
-X = 5
-Y = -6
-
+X =  6 + Var(1) * 0.5
+Y = -7 - Var(1) * 0.5
+ 
 [State 1030, Jump]
 type = PlaySnd
 trigger1 = Anim = 1030 && AnimElem = 5
@@ -710,6 +706,11 @@ fvar(39) = fvar(39)*0.85
 persistent = 0
 ignorehitpause = 1
 
+[State 1030, Jump]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = 7050,0
+
 [State 1034, Stop]
 type = VelAdd
 trigger1 = 1
@@ -735,7 +736,7 @@ persistent = 0
 [State 1034, Stop]
 type = VelSet
 trigger1 = AnimElem = 2
-X = fvar(0)
+X = fvar(0)*1.2
 persistent = 0
 
 [State 1034, Stop]
@@ -839,14 +840,14 @@ y = -0.7
 
 [State 1040, Vel]
 type = PlaySnd
-trigger1 = AnimElemNo(0) = 2
+trigger1 =  AnimElem = 2 || AnimElem = 6 || AnimElem = 10
 value = S7000,1
 loop = 1
 channel = 0
 
 [State 1040, Vel]
 type = StopSnd
-trigger1 = AnimElemNo(0) > 9
+trigger1 = AnimElemNo(0) > 12
 trigger2 = Pos Y > -Vel Y
 trigger2 = Vel Y > 0
 channel = 0
@@ -859,7 +860,7 @@ y = IfElse(var(0) = 2, -4, IfElse(var(0) = 1, -2.3, 0))
 
 [State 1250, Hit]
 type = HitDef
-trigger1 = animelem = 2 || animelem = 6 
+trigger1 = AnimElem = 2 || AnimElem = 6 || AnimElem = 10
 attr = A, SA
 damage = 57, 7
 animtype = Hard
@@ -869,7 +870,7 @@ priority = 4, Hit
 pausetime = 14, 14
 sparkno = s7001
 sparkxy = -10, 0
-hitsound = s2, 6
+hitsound = s7020,3
 guardsound = s2, 0
 ground.type = High
 ground.slidetime = 16
@@ -901,7 +902,7 @@ palfx.time = 8
 
 [State 1250, hitb]
 type = HitDef
-trigger1 = animelem = 4 || animelem = 8
+trigger1 = AnimElem = 4 || AnimElem = 8 || AnimElem = 12
 attr = A, SA
 damage = 47, 7
 animtype = Hard
@@ -911,7 +912,7 @@ priority = 4, Hit
 pausetime = 14, 14
 sparkno = s7001
 sparkxy = -10, 0
-hitsound = s2, 6
+hitsound = s7020,3
 guardsound = s2, 0
 ground.type = High
 ground.slidetime = 16

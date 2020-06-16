@@ -1,156 +1,172 @@
-
-Ayla by SilentProtagonist 
-=========================
-
-Ayla is a three-button character made for MUGEN 1.0.
+Ayla is a three-button character (a+b+c keys) made for MUGEN 1.0.
 This is not a final version but it should be playable.
 
 What's missing:
 
-- More palettes
 - Specific character interactions (intros, winposes, double techs, maybe)
 
-To me, Ayla's feels the most like a Street Fighter character out of
-all CT's characters.
-
-She has lots of sprites based on scratching, kicking and throwing so 
-it wasn't hard to imagine moves for her.
-
-Ayla's Moveset
-==============
+## Moveset
 
 Ayla is meant to be sort of a rushdown character. She walks and 
 runs faster than other characters; her jumps are faster, too. 
 She does not work well at long distances, though, as her only 
 projectile has very low range.
 
-Throws
---------------
 
-**Boulder Toss**: F/B + (a+b)/(b+c)/(a+c)  (Standing).
+### Special Moves
 
-A standard throw. The direction you press determines the
-direction your opponent will be thrown.
+- **Cat Attack**: `F, DF, D, DB, B, a/b/c` (Ground)
 
+A special throw where Ayla jumps at the opponent, scratching 
+and biting them if it connects.
 
-**Cat Attack**: D, DB, B + a/b/c (Standing). Requires 500 Power.
+- **Drill Kick**: `a/b/c` (during Cat Attack's jump)
 
-A special throw where Ayla jumps at the opponent,
-scratching and biting him/her if it connects.
-This attack only hits in the falling part of the jump;
-it can also be cancelled into Drill Kick (see below).
+Ayla transitions into a spinning kick.
 
-
-Specials
---------------
-
-**Rock Throw**: D, DF, F + a/b/c (Standing).
+- **Rock Throw**: `D, DF, F, a/b/c` (Ground)
 
 A projectile that travels in a very small arc.
 The speed and range of the rock depend on the button pressed.
 
-**Backflip Kick**: F, D, DF + a/b/c (Standing).
+- **Backflip Kick**: `F, D, DF, a/b/c` (Ground)
 
-Ayla does a rising kick and a diagonal kick after it.
+Ayla performs a rising kick and a diagonal kick after it.
 The speed and angle of the attack depend on the button pressed.
-You can cancel the first part of this special into its second
-part by pressing a/b/c.
 
-**Drill Kick**: a/b/c (while executing Cat Attack).
+- **Tail Whirl**: `D, DB, B, a/b/c` (Air)
 
-Ayla throws herself horizontally at the opponent while spinning.
-
-**Tail Whirl**: D, DB, B + a/b/c (Air).
-
-Ayla does a Tatsumaki Senpuu Kyaku-styled series of kicks. 
-The a version moves horizontally; the b version, diagonally up, 
-and the c version rises vertically.
+Ayla spins while kicking. The `a` version moves horizontally; 
+the `b` version, diagonally up, and the `c` version rises vertically.
 
 
-Supers
-------
+### Super Moves
 
-**Tail Spin**: D, DB, B, D, DB, B + a/b/c (Standing). Requires 1000 Power.
+- **Tail Spin**: `D, DB, B, D, DB, B, a/b/c` (Ground)
 
-Ayla spins and creates two twisters that damage the opponent.
-You can slowly move horizontally to try and do more damage. 
-Don't let your opponents escape!
+Requires 1000 Power. Ayla spins and creates two twisters that damage the 
+opponent. Pressing Left or Right will make Ayla and the twisters move 
+horizontally.
 	
-**Triple Kick**: D, DF, F, D, DF, F, a/b/c (Standing). Requires 1000 Power.
+- **Triple Kick**: `D, DF, F, D, DF, F, a/b/c` (Ground/Air)
 
-Ayla jumps at the opponent, kicking him/her/it up to three times.
-If the first kick misses or is blocked, the move fails, so
-try to use this as a combo finisher.
+Requires 1000 Power. Ayla jumps at the opponent, kicking them up to three times.
+If the first kick misses or is blocked, the move fails.
 
-**Gatling Kick**: D, B, D, F + a/b/c (Standing) Requires 1000 Power. 
+- **Gatling Kick**: `D, B, D, F, a/b/c` (Ground)
 
-Ayla jumps forwards, making a spinning kick. If it connects, 
-the enemy will be trapped in a vortex of debris. This is a throw 
-move, so don't try it against enemies immune to those.
+Requires 1000 Power. Ayla jumps forwards, making a spinning kick. If it 
+connects, the enemy will be trapped in a vortex of debris. Qualifies as a throw.
 
-Special Mode
-------------
+### Special Mode
 
-**Berserker**: a + c (Standing). Requires 3000 Power.
+- **Berserker**: `a + c` (Ground)
 
-Ayla fills with rage: you can see she's lost control! You'll automatically walk
-towards your opponent.  As long as you're in this mode, almost all your moves will 
-chain. Your attacks will be quicker and you can cancel them into each other. 
-Your Power will automatically decrease: when you run out of Power, this mode ends.
-Go for a big flashy combo!
+Requires 3000 Power. Ayla will automatically walk towards the opponent: while in 
+this state, most of her attacks will be quicker and can be cancelled into each 
+other. Ayla's Power while decrease continuously while in this state.
 
-Final Move
-----------
+### Final Move
 
-**Instant Dino Murder / Shun Kyoryuu Satsu**: D, B, D, F + a/b/c (Standing, must have Berserker activated). Uses all of your Power, ending Berserker mode.
+- **Instant Dino Murder / Shun Kyoryuu Satsu**: `D, B, D, F, a/b/c` (Ground 
+while Berserker is active)
 
-A super throw. Ayla advances toward the opponent. If it grabs him/her, everything 
-goes dark as he/she gets punished. The reference in this one is pretty obvious. 
-Try ending a round with this move for a special win pose!
+Spends all remaining Power. Ayla advances toward the opponent for a super throw.
+Will result in a special winpose if used as a round finisher.
 
-"Messatsu!"
+## 12p Mode
 
-----------------------------
-Credits and Acknowledgements
-----------------------------
+Ayla's 12p mode is based on Street Figher's Akuma/Gouki.
 
-- bga, for supporting me all this time.
+### 12p Special Moves
 
-- The Spriters Resource (http://www.spriters-resource.com) for the sprites. In particular,
-  the sprites ripped by Tonberry2k were incredibly useful.
+- **Gou Hadouken**: `D, DF, F, a/b/c` (Ground)
 
-- The Chrono Compendium (http://chronocompendium.com), in particular the user Dirtie, for
-  ripping the sound effects from Chrono Trigger and making them available to everyone.
+Akuma throws a fireball that travels horizontally. The button used determines 
+the projectile's speed.
 
-- The guys at the Mugen Fighters Guild forum (http://mugenguild.com/forumx/index.php),
-  for answering my questions and helping me learn. Their Code Library/Snippet Section rocks.
+- **Zankuu Hadouken**: `D, DF, F, a/b/c` (Air)
 
-- PoTS (http://mugenguild.com/pots/), as I read his characters' code whenever I had doubts. 
-I used some of his code as a base for some moves/state controllers.
+Akuma fires two projectiles diagonally towards the ground. The button used 
+determines the projectiles' speed.
 
-- Square (now Square-Enix) and the team that created Chrono Trigger, for making this
-wonderful game.
+- **Gou Shouryuuken**: `F, D, DF, a/b/c` (Ground)
 
-- Elecbyte, of course, for creating the awesome fighting game engine that is MUGEN.
+Akuma performs a rising uppercut. The button used determines the distance 
+traveled.
+
+- **Tatsumaki Zankuu Kyaku**: `D, DB, B, a/b/c` (Ground)
+
+Akuma spins while kicking, advancing horizontally. The button used determines 
+the distance traveled.
+
+- **Kuchuu Tatsumaki Zankuu Kyaku**: `D, DB, B, a/b/c` (Air)
+
+Same as the previous attack, but in the air.
+
+- **Ashura Zenkuu**: `F, D, DF, a+b/b+c` / `B, D, DB, a+b/b+c` (Ground)
+
+Akuma becomes intangible and moves across the screen. The `F, D, DF` versions 
+move forward, while the `B, D, DB` versions move backwards. The `a+b` versions 
+travel less distance than the `b+c` versions.
+
+
+### 12p Super Moves
+
+- **Messatsu Gou Hadou**: `D, DF, F, D, DF, F, a/b/c` (Ground)
+
+Akuma fires a stronger version of the Gou Hadouken. Hits multiple times.
+
+- **Tenma Gou Zankuu**: `D, DF, F, D, DF, F, a/b/c` (Air)
+
+Same as the previous attack, but it's fired diagonally towards the ground.
+
+- **Messatsu Gou Rasen**: `D, DB, B, D, DB, B, a/b/c` (Ground)
+
+Akuma performs a series of spinning kicks while rising in the air.
+
+- **Messatsu Gou Senpuu**: `D, DB, B, D, DB, B, a/b/c` (Air)
+
+Same as the previous attack, but in the air.
+
+- **Messatsu Gou Shouryuu**: `D, B, D, F, a/b/c` (Ground)
+
+Akuma performs a series of three consecutive uppercuts, the last of them rising
+into the air.
+
+Additionally, Akuma has access to **Berserker** and **Shun Kyoryuu Satsu**.
+
+
+# Copyright, licensing, etc.
+
+Use my code for whatever you want. Chrono Trigger and all of its characters are 
+property of Square-Enix. Akuma/Gouki belongs to Capom. This creation/adaptation 
+was made for entertainment, not for profit. If you want to host this, modify or 
+use it for your own purposes, try to contact me first.
+
+# Credits and Acknowledgments 
+
+Thanks to:
+
+- My friends and family, for supporting me all this time.
+
+- [The Spriters Resource](http://www.spriters-resource.com) for the sprites. 
+  Rips by Tonberry2k, Nemu, Dazz and many others were incredibly useful.
+
+- [The Chrono Compendium](http://chronocompendium.com). In particular, the user 
+  Dirtie ripped a ton of Chrono Trigger sound effect and made them available to 
+  everyone.
+
+- The guys at the [Mugen Fighters Guild Forum](http://mugenguild.com/forumx/index.php),
+  for answering my questions and helping me learn. Their Code Library/Snippet 
+  Section rocks.
+
+- So many MUGEN creators: PoTS, SMEE, Bia, warusaki3 and everyone who creates 
+  stuff that others can use.
+
+- Square (now Square-Enix) and the team that created Chrono Trigger.
+
+- Elecbyte, of course, for creating the awesome fighting game engine that is 
+  MUGEN.
 
 - And you...
-
----------- 
-Disclaimer
-----------
-
-- Chrono Trigger and all of its characters are property of Square-Enix.
-
-- This creation/adaptation was made for entertainment and not for profit. Therefore, this 
-creation/adaptation (and any part of it) may not be used for commercial purposes. 
-
-- If you want to host this creation, modify or use it for your own purposes,
-  try to ask me first.
-
--------
-Contact
--------
-
-- If you have questions, suggestions, comments, send me a private message at the Mugen Fighters Guild's forum.
-  I may not answer immediately, but I'll try.
-

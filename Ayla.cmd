@@ -278,6 +278,57 @@ time = 32
 
 ;-| Special Motions |------------------------------------------------------
 
+
+[Command]
+name = "hcba"
+command = F, D, B, a
+time = 40
+[Command]
+name = "hcbb"
+command = F, D, B, b
+time = 40
+[Command]
+name = "hcbc"
+command = F, D, B, c
+time = 40
+[Command]
+name = "hcba"
+command = F, D, B, ~a
+time = 40
+[Command]
+name = "hcbb"
+command = F, D, B, ~b
+time = 40
+[Command]
+name = "hcbc"
+command = F, D, B, ~c
+time = 40
+
+[Command]
+name = "hcba"
+command = ~F, D, B, a
+time = 40
+[Command]
+name = "hcbb"
+command = ~F, D, B, b
+time = 40
+[Command]
+name = "hcbc"
+command = ~F, D, B, c
+time = 40
+[Command]
+name = "hcba"
+command = ~F, D, B, ~a
+time = 40
+[Command]
+name = "hcbb"
+command = ~F, D, B, ~b
+time = 40
+[Command]
+name = "hcbc"
+command = ~F, D, B, ~c
+time = 40
+;---
 [Command]
 name = "qcba"
 command =  ~D, DB, B, a
@@ -602,10 +653,13 @@ value = 2010
 triggerall = PalNo != 12
 triggerall = Command = "2qcfa" || Command = "2qcfb" || Command = "2qcfc" 
 triggerall = Power >= 1000
-trigger1 = statetype != A
 trigger1 = ctrl
-trigger2 = ( StateNo = [200,299] ) && MoveHit
-trigger3 = ( StateNo = [400,499] ) && MoveHit
+trigger2 = ( StateNo = [200,299] ) && MoveContact
+trigger3 = ( StateNo = [400,499] ) && MoveContact
+trigger4 = ( StateNo = [600,699] ) && MoveContact
+trigger5 = ( StateNo = 1010 ) && MoveContact
+trigger6 = ( StateNo = 1034 ) && MoveContact
+trigger7 = ( StateNo = 1040 ) && MoveContact
 ;---------------------------------------------------------------------------
 [State -1, Tail Spin]
 type = ChangeState
@@ -725,6 +779,16 @@ triggerall = command = "qcfa" || command = "qcfb" || command = "qcfc"
 triggerall = roundstate = 2 && statetype != A && !numhelper(1020)
 trigger1 = ctrl
 trigger2 = (stateno = [200, 299]) && movecontact
+
+;---------------------------------------------------------------------------
+[State -1, Cat Attack]
+type = ChangeState
+value = 1030
+triggerall = PalNo != 12
+triggerall = Command = "hcba" || Command = "hcbb" || Command = "hcbc"
+trigger1 = statetype != A
+trigger1 = ctrl
+
 ;---------------------------------------------------------------------------
 [State -1, Cat Attack into Drill Kick]
 type = ChangeState
@@ -734,15 +798,7 @@ triggerall = StateNo = 1030 && !MoveContact
 triggerall = Pos Y < 0
 trigger1 = Command = "a" || Command = "b" || Command = "c"
 trigger2 = Vel Y > 0 && Var(21)
-;---------------------------------------------------------------------------
-[State -1, Cat Attack]
-type = ChangeState
-value = 1030
-triggerall = PalNo != 12
-triggerall = Power >= 500
-triggerall = Command = "qcba" || Command = "qcbb" || Command = "qcbc" 
-trigger1 = statetype != A
-trigger1 = ctrl
+
 ;---------------------------------------------------------------------------
 [State -1, Tail Whirl]
 type = ChangeState
@@ -753,8 +809,6 @@ trigger1 = statetype = A
 trigger1 = ctrl
 trigger2 = ( StateNo = [600,610] ) && movecontact
 trigger3 = ( StateNo = 1010 ) && movecontact && AnimElemNo(0) < 9
-
-
 
 
 ;---------------------------------------------------------------------------

@@ -370,15 +370,21 @@ trigger1 = var(0) = 1
 ;---------------------------------------------------------------------------
 ;Triple Kick
 [Statedef 2010]
-type    = S
+type    = U
 movetype= A
-physics = S
+physics = N
 juggle  = 3
 poweradd= -1000
 ctrl = 0
 anim = 2010
 sprpriority = 2
+velset = 0,0
 facep2 = 1
+
+[State 1040, Vel]
+type = StopSnd
+trigger1 =  !Time
+channel = 0
 
 [State 2010, NHB]
 type = NotHitBy
@@ -430,9 +436,9 @@ ctrl = 0
 
 ; First Kick
 [Statedef 2011]
-type    = S
+type    = U
 movetype= A
-physics = S
+physics = N
 juggle  = 3
 poweradd= 0
 velset = 0,0
@@ -467,12 +473,12 @@ physics = N
 [State 2011, X]
 Type = VarSet
 Trigger1 = !Time
-fvar(0) = (EnemyNear(0), Pos X- Pos X) * Facing
+fvar(0) = (EnemyNear(0), Pos X - Pos X + EnemyNear(0), Vel X) * Facing
 
 [State 2011, Y]
 Type = VarSet
 trigger1 = !Time
-fvar(1) = (EnemyNear(0), Pos Y - Pos Y + IfElse(Enemynear(0), Statetype = S, Enemynear(0),Const(size.head.pos.y), Enemynear(0),Const(size.mid.pos.y)))
+fvar(1) = (EnemyNear(0), Pos Y - Pos Y + Enemynear(0),Const(size.mid.pos.y) + EnemyNear(0), Vel Y * 2)
 
 [State 2011, Vector Length]
 Type = VarSet
@@ -655,12 +661,12 @@ Y = 0.85
 [State 2012, X]
 Type = VarSet
 Trigger1 =  !AnimTime && Anim = 2012
-fvar(0) = (EnemyNear(0), Pos X- Pos X) * Facing
+fvar(0) = (EnemyNear(0), Pos X - Pos X + EnemyNear(0), Vel X) * Facing
 
 [State 2012, Y]
 Type = VarSet
 trigger1 = !AnimTime && Anim = 2012
-fvar(1) = (EnemyNear(0), Pos Y - Pos Y + Enemynear(0),Const(size.mid.pos.y))
+fvar(1) = (EnemyNear(0), Pos Y - Pos Y + Enemynear(0),Const(size.mid.pos.y) + EnemyNear(0), Vel Y * 2)
 
 [State 2012, Vector Length]
 Type = VarSet
@@ -1074,7 +1080,7 @@ value = 0
 type = HitDef
 trigger1 = !Time
 attr = A, HT 
-hitflag = MA-
+hitflag = MA
 priority = 4, Miss
 sparkno = -1
 p1stateno = 2022
@@ -1147,7 +1153,7 @@ ignorehitpause =  0
 
 [State 2022, Snd]
 type = PlaySnd
-trigger1 = Time = 170
+trigger1 = Time = 130
 value = S7020,6
 
 [State 2022, Screenbound]

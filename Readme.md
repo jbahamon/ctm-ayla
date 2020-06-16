@@ -136,15 +136,14 @@ into the air.
 
 Additionally, Akuma has access to **Berserker** and **Shun Kyoryuu Satsu**.
 
-
-# Copyright, licensing, etc.
+## Copyright, licensing, etc.
 
 Use my code for whatever you want. Chrono Trigger and all of its characters are 
 property of Square-Enix. Akuma/Gouki belongs to Capom. This creation/adaptation 
 was made for entertainment, not for profit. If you want to host this, modify or 
 use it for your own purposes, try to contact me first.
 
-# Credits and Acknowledgments 
+## Credits and Acknowledgments 
 
 Thanks to:
 
